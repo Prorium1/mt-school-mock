@@ -1,0 +1,957 @@
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>陰山式MT連携オンラインスクール|伝承療法と最新医学を、現場で使える判断へ</title>
+<style>
+/* ============ tokens ============ */
+:root{
+  --navy-950:#0D1F30;
+  --navy-900:#122A40;
+  --navy:#17324D;
+  --navy-700:#22456A;
+  --teal:#1F7A72;
+  --teal-600:#186158;
+  --teal-100:#E2F0EE;
+  --sage:#DDEBE6;
+  --gold:#A8894F;
+  --gold-100:#F3EDDF;
+  --ivory:#F7F5EF;
+  --surface:#FFFFFF;
+  --ink:#1C2833;
+  --slate:#667085;
+  --border:#DDE2E7;
+  --border-strong:#C4CCD4;
+  --success:#067647; --success-bg:#EAF5EF;
+  --warning:#B54708; --warning-bg:#FBEEE3;
+  --danger:#B42318;  --danger-bg:#FBEAE8;
+  --font-serif:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif;
+  --font-sans:"Hiragino Kaku Gothic ProN","Yu Gothic Medium","YuGothic","Noto Sans JP",-apple-system,"Segoe UI",sans-serif;
+  --radius:10px; --radius-lg:16px;
+  --shadow-sm:0 1px 2px rgba(18,42,64,.06);
+  --shadow-md:0 4px 16px rgba(18,42,64,.10);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+
+/* ============ base ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--ivory);font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{max-width:100%;display:block}
+a{color:var(--teal)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px}
+ul{list-style:none}
+.wrap{width:min(1080px,92vw);margin-inline:auto}
+.sec{padding:clamp(4rem,8vw,7rem) 0}
+.bg-ivory{background:var(--ivory)}
+.bg-surface{background:var(--surface)}
+
+/* shared heading kit */
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+.eyebrow::before{content:"";width:26px;height:1px;background:currentColor;flex:none}
+.eyebrow--gold{color:var(--gold)}
+.eyebrow--light{color:var(--sage)}
+.sec-title{font-family:var(--font-serif);font-weight:600;letter-spacing:.02em;line-height:1.45;font-size:clamp(1.55rem,1.1rem + 1.8vw,2.3rem);color:var(--ink);margin-top:14px}
+.sec-lead{margin-top:18px;color:var(--slate);max-width:680px}
+.sec-head--center{text-align:center}
+.sec-head--center .sec-lead{margin-inline:auto}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-sans);font-weight:700;text-decoration:none;border-radius:999px;border:0;cursor:pointer;transition:transform .25s var(--ease),opacity .25s var(--ease)}
+.btn--teal{background:var(--teal);color:#fff;padding:16px 36px;font-size:16px;box-shadow:var(--shadow-md)}
+.btn--teal:hover{background:var(--teal-600);transform:translateY(-2px)}
+.btn--ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45);padding:15px 30px;font-size:15px}
+.btn--ghost:hover{border-color:#fff;transform:translateY(-2px)}
+
+/* scroll reveal */
+.rv{opacity:0;transform:translateY(12px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* photo placeholder */
+.photo-ph{background:var(--sage);border-radius:var(--radius-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:28px;text-align:center}
+.photo-ph svg{width:46%;height:auto;opacity:.9}
+.photo-ph figcaption{font-size:12.5px;color:#5A6E66;letter-spacing:.08em}
+
+/* ============ 1. hero ============ */
+.hero{position:relative;overflow:hidden;background:linear-gradient(165deg,var(--navy-950) 20%,var(--navy-900) 100%);color:#fff}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(640px 420px at 86% 8%,rgba(31,122,114,.14),transparent 62%),
+  radial-gradient(520px 400px at 6% 92%,rgba(168,137,79,.10),transparent 60%)}
+.hero__inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4vw,56px);align-items:center;padding:clamp(4.5rem,9vw,7.5rem) 0 clamp(3rem,6vw,4.5rem)}
+.hero__eyebrow{color:var(--sage)}
+.hero h1{font-family:var(--font-serif);font-weight:600;letter-spacing:.02em;line-height:1.42;font-size:clamp(1.7rem,.9rem + 3.1vw,3.1rem);margin-top:18px}
+.hero h1 .nobr{display:inline-block}
+.hero__sub{margin-top:22px;color:rgba(255,255,255,.82);font-size:15.5px;max-width:560px}
+.hero__checks{margin-top:26px;display:grid;gap:10px}
+.hero__checks li{display:flex;gap:12px;align-items:flex-start;font-weight:600;font-size:15.5px}
+.hero__checks svg{flex:none;margin-top:5px}
+.hero__cta{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero__photo{aspect-ratio:5/6;width:100%}
+.hero__photo figcaption{color:#4E6159}
+.hero__band{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
+.hero__band p{padding:16px 0;font-size:13.5px;color:rgba(255,255,255,.75);letter-spacing:.02em}
+@media(max-width:920px){
+  .hero__inner{grid-template-columns:1fr}
+  .hero__photo{display:none}
+}
+
+/* ============ 2. problem ============ */
+.prob-chips{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:#EDF0F3;border:1px solid var(--border);color:#4A5866;border-radius:999px;padding:9px 20px;font-weight:600;font-size:14.5px}
+.prob-note{margin-top:14px;font-size:13.5px;color:var(--slate)}
+.prob-cards{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.prob-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px 24px;box-shadow:var(--shadow-sm)}
+.prob-card__tag{display:inline-block;background:var(--teal-100);color:var(--teal-600);font-size:12px;font-weight:700;letter-spacing:.12em;border-radius:999px;padding:4px 14px}
+.prob-card h3{font-family:var(--font-serif);font-weight:600;font-size:1.1rem;margin-top:14px}
+.prob-card ul{margin-top:12px;display:grid;gap:8px}
+.prob-card li{position:relative;padding-left:16px;font-size:14.5px;color:#3D4B59;line-height:1.7}
+.prob-card li::before{content:"";position:absolute;left:0;top:.66em;width:6px;height:6px;border-radius:50%;background:var(--border-strong)}
+@media(max-width:860px){.prob-cards{grid-template-columns:1fr}}
+
+/* ============ 3. solution ============ */
+.sol-steps{margin-top:52px;display:grid;grid-template-columns:repeat(5,1fr)}
+.sol-step{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 10px}
+.sol-step:not(:last-child)::before{content:"";position:absolute;top:26px;left:calc(50% + 32px);right:calc(-50% + 32px);height:2px;background:var(--border-strong)}
+.sol-num{width:52px;height:52px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.05rem}
+.sol-step--act .sol-num{background:var(--teal)}
+.sol-name{font-family:var(--font-serif);font-weight:600;font-size:1.12rem;margin-top:14px}
+.sol-desc{margin-top:6px;font-size:13px;color:var(--slate);line-height:1.7}
+.sol-note{margin-top:36px;text-align:center;font-size:13.5px;color:var(--slate)}
+@media(max-width:860px){
+  .sol-steps{grid-template-columns:1fr;gap:22px;max-width:480px;margin-inline:auto}
+  .sol-step{display:grid;grid-template-columns:52px 1fr;gap:0 16px;text-align:left;align-items:start;padding:0}
+  .sol-step:not(:last-child)::before{top:56px;bottom:-22px;left:25px;right:auto;width:2px;height:auto}
+  .sol-name{grid-column:2;margin-top:0;padding-top:12px}
+  .sol-desc{grid-column:2}
+  .sol-num{grid-row:1/3}
+}
+
+/* ============ 4. before/after ============ */
+.ba-list{margin-top:40px;max-width:900px;margin-inline:auto}
+.ba-row{display:grid;grid-template-columns:1fr 44px 1fr;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 22px;margin-top:10px}
+.ba-tag{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--slate);margin-bottom:3px}
+.ba-after .ba-tag{color:var(--teal)}
+.ba-before p{color:var(--slate);font-size:14.5px;line-height:1.7}
+.ba-after p{color:var(--teal-600);font-weight:700;font-size:14.5px;line-height:1.7}
+.ba-arrow{display:flex;justify-content:center;color:var(--border-strong)}
+@media(max-width:680px){
+  .ba-row{grid-template-columns:1fr;gap:8px}
+  .ba-arrow{transform:rotate(90deg);width:24px;margin:0 auto}
+}
+
+/* ============ 5. instructor ============ */
+.tch{background:var(--navy-900);color:#fff;position:relative;overflow:hidden}
+.tch::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(560px 380px at 92% 100%,rgba(31,122,114,.12),transparent 60%)}
+.tch .wrap{position:relative;z-index:1}
+.tch-grid{margin-top:44px;display:grid;grid-template-columns:320px 1fr;gap:clamp(28px,5vw,60px);align-items:start}
+.tch-photo{aspect-ratio:4/5}
+.tch-photo figcaption{color:#4E6159}
+.tch-name{font-family:var(--font-serif);font-weight:600;font-size:clamp(1.35rem,2.4vw,1.7rem)}
+.tch-role{margin-top:4px;color:var(--sage);font-size:13.5px;letter-spacing:.1em}
+.tch-facts{margin-top:20px;display:grid;gap:9px}
+.tch-facts li{position:relative;padding-left:18px;color:rgba(255,255,255,.85);font-size:15px}
+.tch-facts li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:2px;background:var(--teal)}
+.tch-note{margin-top:14px;font-size:12.5px;color:rgba(255,255,255,.5)}
+.tch-quote{margin-top:30px;border-left:3px solid var(--gold);padding-left:20px;font-family:var(--font-serif);font-weight:600;font-size:clamp(1.25rem,1rem + 1.4vw,1.7rem);line-height:1.6;letter-spacing:.03em}
+@media(max-width:880px){
+  .tch-grid{grid-template-columns:1fr}
+  .tch-photo{max-width:300px}
+}
+
+/* ============ 6. signature (診療メモ) ============ */
+.sig-card{max-width:820px;margin:44px auto 0;background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);overflow:hidden}
+.sig-card__head{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:space-between;align-items:center;padding:15px clamp(18px,4vw,32px);background:#FCFBF6;border-bottom:2px solid var(--gold)}
+.sig-card__title{font-family:var(--font-serif);font-weight:600;font-size:1rem;letter-spacing:.04em}
+.sig-card__meta{font-size:11.5px;color:var(--slate);letter-spacing:.06em}
+.sig-card__body{padding:30px clamp(18px,4.5vw,46px) 40px;background-image:repeating-linear-gradient(to bottom,transparent 0 35px,rgba(23,50,77,.045) 35px 36px)}
+.sig-case{border:1px dashed var(--border-strong);border-radius:var(--radius);background:rgba(247,245,239,.75);padding:16px 20px;font-size:14.5px;line-height:1.9;color:#3D4B59}
+.sig-case strong{color:var(--ink)}
+.sig-step{margin-top:30px;padding-left:clamp(0px,2vw,10px)}
+.sig-step h3{display:flex;align-items:baseline;gap:12px;font-family:var(--font-serif);font-weight:600;font-size:1.08rem;letter-spacing:.03em}
+.sig-num{font-family:var(--font-serif);color:var(--gold);font-size:1.45rem;line-height:1;flex:none}
+.sig-step > p{margin-top:10px;font-size:15px;color:#33404D}
+.sig-quote{margin:16px 0 4px;font-family:var(--font-serif);font-weight:600;color:var(--navy);font-size:clamp(1.3rem,1rem + 1.7vw,1.85rem);line-height:1.6;letter-spacing:.03em}
+.sig-quote-cap{font-size:12.5px;color:var(--slate)}
+.sig-dd{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sig-dd div{border-radius:var(--radius);padding:14px 16px;font-size:14.5px;line-height:1.7}
+.sig-dd .do{background:var(--teal-100)}
+.sig-dd .do b{color:var(--teal-600);display:block;font-size:12.5px;letter-spacing:.14em;margin-bottom:4px}
+.sig-dd .dont{background:#F1F2F4}
+.sig-dd .dont b{color:var(--slate);display:block;font-size:12.5px;letter-spacing:.14em;margin-bottom:4px}
+@media(max-width:600px){.sig-dd{grid-template-columns:1fr}}
+
+/* ============ 7. curriculum ============ */
+.cur-note{margin-top:10px;font-size:13.5px;color:var(--slate)}
+.cur-phase{margin-top:44px;border-left:3px solid var(--ph,var(--navy));padding-left:clamp(16px,3vw,30px)}
+.cur-phase.ph1{--ph:var(--navy)}
+.cur-phase.ph2{--ph:var(--teal)}
+.cur-phase.ph3{--ph:var(--gold)}
+.cur-phase.ph4{--ph:var(--ink)}
+.cur-phase__label{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px}
+.cur-phase__num{font-size:11.5px;font-weight:700;letter-spacing:.16em;color:var(--ph)}
+.cur-phase__name{font-family:var(--font-serif);font-weight:600;font-size:1.18rem}
+.cur-phase__range{font-size:12.5px;color:var(--slate)}
+.cur-weeks{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:2px 26px}
+.cur-week{display:flex;gap:10px;align-items:baseline;padding:8px 2px;border-bottom:1px dashed var(--border);font-size:14.5px}
+.cur-wn{flex:none;min-width:36px;font-size:12px;font-weight:700;color:var(--ph)}
+.cur-badge{flex:none;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:#fff;background:var(--navy);border-radius:999px;padding:2px 9px;white-space:nowrap}
+.cur-badge--gold{background:var(--gold)}
+.cur-weekcard{margin-top:56px;background:var(--ivory);border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px clamp(20px,3.5vw,38px) 34px}
+.cur-weekcard h3{font-family:var(--font-serif);font-weight:600;font-size:1.2rem;text-align:center}
+.cur-weekcard > p{text-align:center;font-size:13.5px;color:var(--slate);margin-top:6px}
+.cur-weekgrid{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cur-wk-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;display:grid;grid-template-columns:22px 1fr;gap:4px 12px;align-items:start}
+.cur-wk-item svg{margin-top:4px;color:var(--teal)}
+.cur-wk-item b{font-size:14.5px}
+.cur-wk-item span{grid-column:2;font-size:12.5px;color:var(--slate);line-height:1.65}
+@media(max-width:920px){.cur-weekgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.cur-weekgrid{grid-template-columns:1fr}}
+
+/* ============ 8. tiers ============ */
+.tier-stack{max-width:780px;margin:44px auto 0;display:grid;gap:16px}
+.tier-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;border-radius:999px;padding:3px 12px;margin-bottom:8px}
+.tier1{background:var(--navy);color:#fff;border-radius:var(--radius-lg);padding:24px 28px;box-shadow:var(--shadow-sm)}
+.tier1 .tier-label{background:rgba(255,255,255,.16);color:#fff}
+.tier1 h3{font-family:var(--font-serif);font-weight:600;font-size:1.15rem}
+.tier1 p{margin-top:6px;font-size:13.5px;color:rgba(255,255,255,.78)}
+.tier2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tier2 > div{background:var(--surface);border:1px solid var(--teal);border-radius:var(--radius-lg);padding:20px 24px}
+.tier2 .tier-label{background:var(--teal-100);color:var(--teal-600)}
+.tier2 h3{font-size:1rem;font-weight:700;color:var(--teal-600)}
+.tier2 p{margin-top:6px;font-size:13.5px;color:#3D4B59;line-height:1.75}
+.tier3{background:var(--surface);border:1px solid var(--gold);border-radius:var(--radius-lg);padding:22px 26px}
+.tier3 .tier-label{background:var(--gold-100);color:var(--gold)}
+.tier3 h3{font-family:var(--font-serif);font-weight:600;font-size:1.1rem;display:flex;align-items:center;gap:10px}
+.tier3 h3 svg{color:var(--gold);flex:none}
+.tier3 > p{margin-top:4px;font-size:12.5px;color:var(--slate)}
+.tier3 ul{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}
+.tier3 li{position:relative;padding-left:16px;font-size:13.5px;color:#3D4B59}
+.tier3 li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:2px;background:var(--gold)}
+.tier-msg{margin-top:26px;text-align:center;font-family:var(--font-serif);font-weight:600;font-size:clamp(1.05rem,2vw,1.25rem);letter-spacing:.03em}
+@media(max-width:680px){
+  .tier2{grid-template-columns:1fr}
+  .tier3 ul{grid-template-columns:1fr}
+}
+
+/* ============ 9. abilities + certificate ============ */
+.ab-grid{margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.ab-card{background:var(--ivory);border:1px solid var(--border);border-radius:var(--radius);padding:18px 18px 16px}
+.ab-num{font-family:var(--font-serif);font-size:1.7rem;font-weight:600;color:rgba(23,50,77,.5);line-height:1}
+.ab-name{margin-top:8px;font-weight:700;font-size:15px}
+.ab-q{margin-top:2px;color:var(--teal);font-weight:700;font-size:13px}
+.cert{margin-top:60px;display:grid;grid-template-columns:minmax(280px,420px) 1fr;gap:clamp(26px,4vw,52px);align-items:center;max-width:900px;margin-inline:auto}
+.cert-svg{filter:drop-shadow(0 4px 14px rgba(18,42,64,.12))}
+.cert-text h3{font-family:var(--font-serif);font-weight:600;font-size:1.3rem}
+.cert-text p{margin-top:12px;font-size:14.5px;color:#3D4B59}
+.cert-caution{margin-top:14px;border-left:3px solid var(--gold);padding:8px 0 8px 14px;font-size:13px;color:var(--slate);background:var(--gold-100);border-radius:0 var(--radius) var(--radius) 0}
+@media(max-width:900px){.ab-grid{grid-template-columns:1fr 1fr}.cert{grid-template-columns:1fr}}
+
+/* ============ 10. pricing ============ */
+.price{background:var(--navy-900);color:#fff}
+.price .sec-title{color:#fff}
+.price .sec-lead{color:rgba(255,255,255,.7)}
+.price-grid{margin:48px auto 0;max-width:860px;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+.price-card{position:relative;background:var(--surface);color:var(--ink);border-radius:var(--radius-lg);padding:34px 30px 30px;box-shadow:var(--shadow-md);display:flex;flex-direction:column}
+.price-card--reco{border:2px solid var(--gold)}
+.price-ribbon{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-weight:700;font-size:12.5px;letter-spacing:.2em;padding:6px 20px;border-radius:999px;white-space:nowrap}
+.price-name{font-family:var(--font-serif);font-weight:600;font-size:1.15rem}
+.price-amt{margin-top:14px;font-weight:800;font-size:clamp(2rem,4vw,2.5rem);line-height:1.1;letter-spacing:.01em}
+.price-amt small{font-size:.95rem;font-weight:700;margin-left:2px}
+.price-sub{margin-top:6px;font-size:12.5px;color:var(--slate)}
+.price-feats{margin-top:20px;padding-top:18px;border-top:1px solid var(--border);display:grid;gap:9px}
+.price-feats li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.65}
+.price-feats svg{flex:none;margin-top:4px;color:var(--teal)}
+.price-feats li.gold{font-weight:700}
+.price-feats li.gold svg{color:var(--gold)}
+.price-note{margin-top:20px;text-align:center;font-size:12.5px;color:rgba(255,255,255,.55)}
+@media(max-width:780px){.price-grid{grid-template-columns:1fr;max-width:480px}}
+
+/* ============ 11. faq ============ */
+.faq-list{max-width:820px;margin:40px auto 0}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-top:10px;overflow:hidden}
+.faq-q{width:100%;display:flex;align-items:center;gap:14px;padding:17px 20px;background:none;border:0;font-family:inherit;font-size:15px;font-weight:700;color:var(--ink);text-align:left;cursor:pointer;line-height:1.6}
+.faq-q:hover{background:#FAFAF6}
+.faq-q .qm{font-family:var(--font-serif);color:var(--teal);font-size:1.1rem;flex:none}
+.faq-q .chev{margin-left:auto;flex:none;color:var(--slate);transition:transform .3s var(--ease)}
+.faq-item.open .chev{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 20px 20px 52px;color:#3D4B59;font-size:14.5px}
+.faq-item.open .faq-a{display:block}
+
+/* ============ 12. not-taught ============ */
+.ng-list{max-width:760px;margin:36px auto 0}
+.ng-item{display:flex;gap:14px;align-items:flex-start;padding:13px 4px;border-bottom:1px solid var(--border);color:#3D4B59;font-size:15px}
+.ng-item svg{flex:none;margin-top:5px;color:var(--border-strong)}
+.ng-disc{max-width:760px;margin:34px auto 0;background:var(--ivory);border:1px solid var(--border);border-radius:var(--radius);padding:22px 26px}
+.ng-disc h3{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--slate)}
+.ng-disc p{margin-top:10px;font-size:13px;color:var(--slate);line-height:2}
+
+/* ============ 13. closing ============ */
+.close{position:relative;overflow:hidden;background:var(--navy-950);color:#fff;text-align:center}
+.close::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(620px 400px at 50% 0%,rgba(31,122,114,.13),transparent 62%),
+  radial-gradient(480px 360px at 88% 100%,rgba(168,137,79,.10),transparent 60%)}
+.close .wrap{position:relative;z-index:1}
+.close h2{font-family:var(--font-serif);font-weight:600;letter-spacing:.04em;line-height:1.5;font-size:clamp(1.7rem,1rem + 3vw,2.7rem)}
+.close p{margin-top:18px;color:rgba(255,255,255,.75);font-size:15px}
+.close .btn{margin-top:32px}
+.close-note{margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.5)}
+
+/* ============ 14. footer ============ */
+.foot{background:#0B1622;color:rgba(255,255,255,.6);padding:46px 0 130px;font-size:13px}
+.foot-name{font-family:var(--font-serif);color:#fff;font-size:1.05rem;letter-spacing:.04em}
+.foot-op{margin-top:6px}
+.foot-links{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 22px}
+.foot-links a{color:rgba(255,255,255,.6);text-decoration:none}
+.foot-links a:hover{color:#fff;text-decoration:underline}
+.foot-mock{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.45)}
+
+/* ============ sticky cta bar ============ */
+.ctabar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;gap:20px;padding:11px min(4vw,24px);box-shadow:0 -4px 16px rgba(13,31,48,.25);transform:translateY(110%);visibility:hidden;transition:transform .35s var(--ease),visibility .35s}
+.ctabar.on{transform:none;visibility:visible}
+.ctabar__text{font-size:13.5px;font-weight:600;letter-spacing:.03em}
+.ctabar .btn--teal{padding:11px 28px;font-size:14.5px}
+@media(max-width:600px){
+  .ctabar__text{display:none}
+  .ctabar .btn--teal{width:100%;max-width:420px}
+}
+
+/* ============ mock nav ============ */
+.mock-nav{position:fixed;right:14px;bottom:14px;z-index:60;display:flex;align-items:center;gap:12px;background:var(--navy);color:#fff;border-radius:999px;padding:8px 16px;font-size:12px;box-shadow:var(--shadow-md);transition:transform .35s var(--ease)}
+body.ctabar-on .mock-nav{transform:translateY(-64px)}
+.mock-nav__label{opacity:.55;letter-spacing:.1em}
+.mock-nav a{color:#fff;text-decoration:none;border-bottom:2px solid transparent;padding-bottom:1px}
+.mock-nav a:hover{border-bottom-color:rgba(255,255,255,.5)}
+.mock-nav a[aria-current="page"]{border-bottom-color:var(--gold)}
+@media(max-width:600px){
+  .mock-nav{right:10px;bottom:10px;padding:7px 13px;gap:9px}
+  .mock-nav__label{display:none}
+  body.ctabar-on .mock-nav{transform:translateY(-66px)}
+}
+
+/* ============ reduced motion ============ */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{transition-duration:.01ms !important;animation:none !important}
+}
+</style>
+
+<!-- 1. hero -->
+<section class="hero" id="hero">
+  <div class="wrap hero__inner">
+    <div>
+      <p class="eyebrow hero__eyebrow">医師が教える、オンラインスクール|全30週</p>
+      <h1><span class="nobr">伝承療法と最新医学を、</span><br><span class="nobr">現場で使える判断へ。</span></h1>
+      <p class="hero__sub">&ldquo;なんとなく効く&rdquo;を「医学的に効く理由」に変える。医師・陰山泰成が、症状の背景を医学的に整理し、「施術する・セルフケアを伝える・医療につなぐ」を理由を持って選べるセラピストを育てます。</p>
+      <ul class="hero__checks">
+        <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" style="fill:var(--teal)"/><path d="M5 9.4l2.6 2.6L13 6.6" style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg>症状を一つの原因に決めつけない見立てが身につく</li>
+        <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" style="fill:var(--teal)"/><path d="M5 9.4l2.6 2.6L13 6.6" style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg>施術してよいか、医療につなぐかを判断できる</li>
+        <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" style="fill:var(--teal)"/><path d="M5 9.4l2.6 2.6L13 6.6" style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg>お客様に「効く理由」を自分の言葉で説明できる</li>
+      </ul>
+      <div class="hero__cta">
+        <a class="btn btn--teal" href="#closing">無料説明会に申し込む(仮)</a>
+        <a class="btn btn--ghost" href="#curriculum">カリキュラムを見る</a>
+      </div>
+    </div>
+    <figure class="photo-ph hero__photo">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="44" r="21" style="fill:rgba(23,50,77,.16)"/><path d="M18 112c2-26 20-40 42-40s40 14 42 40z" style="fill:rgba(23,50,77,.16)"/></svg>
+      <figcaption>講師写真が入ります</figcaption>
+    </figure>
+  </div>
+  <div class="hero__band">
+    <div class="wrap"><p>対象:鍼灸師・柔道整復師・あん摩マッサージ指圧師・整体師・エステティシャン・セラピスト など、&ldquo;人を治す、癒す、整える&rdquo;すべての方</p></div>
+  </div>
+</section>
+
+<!-- 2. problem -->
+<section class="sec bg-ivory">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">Problem</p>
+      <h2 class="sec-title">その説明、この6語で終わっていませんか?</h2>
+      <p class="sec-lead">現場でよく使われる、便利な言葉たち。けれど、そこで考えることをやめてしまうと、施術も説明も同じところで止まってしまいます。</p>
+    </div>
+    <div class="prob-chips rv">
+      <span class="chip">自律神経の乱れ</span>
+      <span class="chip">血流の悪化</span>
+      <span class="chip">筋肉の硬さ</span>
+      <span class="chip">腸内環境</span>
+      <span class="chip">骨盤のゆがみ</span>
+      <span class="chip">毒素の蓄積</span>
+    </div>
+    <p class="prob-note rv">こうした言葉の先にある「体の中で何が起きているか」を、医学の言葉で整理できていますか。</p>
+    <div class="prob-cards">
+      <div class="prob-card rv">
+        <span class="prob-card__tag">知識の悩み</span>
+        <h3>学んだ知識が、現場で使えない</h3>
+        <ul>
+          <li>解剖生理学を学んでも、現場での使い方が分からない</li>
+          <li>症状をすべて自律神経や血流で説明してしまう</li>
+          <li>SNSの最新医療情報の正しさを判断できない</li>
+        </ul>
+      </div>
+      <div class="prob-card rv">
+        <span class="prob-card__tag">判断の悩み</span>
+        <h3>「やってよいのか」に、いつも迷う</h3>
+        <ul>
+          <li>どの状態なら施術してよいのか不安</li>
+          <li>医療機関を勧める基準が分からない</li>
+          <li>持病や服薬がある人への施術が怖い</li>
+          <li>セルフケアを何となく伝えている</li>
+        </ul>
+      </div>
+      <div class="prob-card rv">
+        <span class="prob-card__tag">ビジネスの悩み</span>
+        <h3>説明の自信が、信頼につながらない</h3>
+        <ul>
+          <li>お客様への説明に自信がない</li>
+          <li>顧客満足度を上げたい</li>
+          <li>医師や医療従事者と連携できる施術者になりたい</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. solution -->
+<section class="sec bg-surface">
+  <div class="wrap">
+    <div class="sec-head--center rv">
+      <p class="eyebrow">Solution</p>
+      <h2 class="sec-title">目指すのは、「医療と会話できるセラピスト」。</h2>
+      <p class="sec-lead">症状の背景を医学的に整理し、「施術する・セルフケアを伝える・医療につなぐ」を理由を持って選べるようになる。その中心にあるのが、陰山式・判断モデルです。</p>
+    </div>
+    <div class="sol-steps">
+      <div class="sol-step rv">
+        <div class="sol-num">1</div>
+        <h3 class="sol-name">聞く</h3>
+        <p class="sol-desc">症状と時間軸を、ていねいに聞き取る</p>
+      </div>
+      <div class="sol-step rv">
+        <div class="sol-num">2</div>
+        <h3 class="sol-name">整理する</h3>
+        <p class="sol-desc">原因を一つに決めず、候補を並べる</p>
+      </div>
+      <div class="sol-step rv">
+        <div class="sol-num">3</div>
+        <h3 class="sol-name">危険を除く</h3>
+        <p class="sol-desc">レッドフラッグと緊急度を確認する</p>
+      </div>
+      <div class="sol-step rv">
+        <div class="sol-num">4</div>
+        <h3 class="sol-name">範囲を決める</h3>
+        <p class="sol-desc">自分の業務範囲でできることを見極める</p>
+      </div>
+      <div class="sol-step sol-step--act rv">
+        <div class="sol-num">5</div>
+        <h3 class="sol-name">選ぶ</h3>
+        <p class="sol-desc">施術・セルフケア・医療につなぐ、を理由を持って選ぶ</p>
+      </div>
+    </div>
+    <p class="sol-note rv">全30週、どの症状もこの5段階で考えます。判断の「型」が、現場の迷いを減らします。</p>
+  </div>
+</section>
+
+<!-- 4. before/after -->
+<section class="sec bg-ivory">
+  <div class="wrap">
+    <div class="sec-head--center rv">
+      <p class="eyebrow">Before / After</p>
+      <h2 class="sec-title">30週間で、判断がこう変わる。</h2>
+    </div>
+    <div class="ba-list">
+      <div class="ba-row rv">
+        <div class="ba-before"><span class="ba-tag">受講前</span><p>症状を聞くとすぐ施術方法を考える</p></div>
+        <div class="ba-arrow"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg></div>
+        <div class="ba-after"><span class="ba-tag">受講後</span><p>最初に安全性と緊急性を確認する</p></div>
+      </div>
+      <div class="ba-row rv">
+        <div class="ba-before"><span class="ba-tag">受講前</span><p>原因を一つに決めつける</p></div>
+        <div class="ba-arrow"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg></div>
+        <div class="ba-after"><span class="ba-tag">受講後</span><p>複数の原因候補を整理する</p></div>
+      </div>
+      <div class="ba-row rv">
+        <div class="ba-before"><span class="ba-tag">受講前</span><p>「自律神経」「血流」で説明する</p></div>
+        <div class="ba-arrow"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg></div>
+        <div class="ba-after"><span class="ba-tag">受講後</span><p>関係する機能と限界を説明する</p></div>
+      </div>
+      <div class="ba-row rv">
+        <div class="ba-before"><span class="ba-tag">受講前</span><p>受診を勧める基準が曖昧</p></div>
+        <div class="ba-arrow"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg></div>
+        <div class="ba-after"><span class="ba-tag">受講後</span><p>緊急・早期・通常受診を区別する</p></div>
+      </div>
+      <div class="ba-row rv">
+        <div class="ba-before"><span class="ba-tag">受講前</span><p>セルフケアを一律に伝える</p></div>
+        <div class="ba-arrow"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg></div>
+        <div class="ba-after"><span class="ba-tag">受講後</span><p>目的・量・中止基準を個別に設計する</p></div>
+      </div>
+      <div class="ba-row rv">
+        <div class="ba-before"><span class="ba-tag">受講前</span><p>お客様への説明に迷う</p></div>
+        <div class="ba-arrow"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg></div>
+        <div class="ba-after"><span class="ba-tag">受講後</span><p>分かりやすく安全に説明できる</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. instructor -->
+<section class="sec tch">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow eyebrow--light">Instructor</p>
+      <h2 class="sec-title" style="color:#fff">講師紹介</h2>
+    </div>
+    <div class="tch-grid">
+      <figure class="photo-ph tch-photo rv">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="44" r="21" style="fill:rgba(23,50,77,.16)"/><path d="M18 112c2-26 20-40 42-40s40 14 42 40z" style="fill:rgba(23,50,77,.16)"/></svg>
+        <figcaption>講師写真が入ります</figcaption>
+      </figure>
+      <div class="rv">
+        <h3 class="tch-name">陰山 泰成 先生</h3>
+        <p class="tch-role">医師</p>
+        <ul class="tch-facts">
+          <li>医科・歯科の両方の経歴を持つ医師</li>
+          <li>専門:幹細胞・エクソソーム・先端医療</li>
+          <li>YouTubeチャンネルで医療情報を発信</li>
+        </ul>
+        <p class="tch-note">※プロフィール詳細は仮です</p>
+        <blockquote class="tch-quote">「知識よりも、判断の過程を教えます。」</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. signature -->
+<section class="sec bg-ivory">
+  <div class="wrap">
+    <div class="sec-head--center rv">
+      <p class="eyebrow eyebrow--gold">Signature</p>
+      <h2 class="sec-title">「陰山先生なら、ここを見る」</h2>
+      <p class="sec-lead">毎週の講義に、固定コーナーがあります。医学知識は本にもあります。しかし「何を最初に聞き、どの情報で判断が変わり、何をあえてやらないか」は、臨床の中にしかありません。</p>
+    </div>
+    <article class="sig-card rv">
+      <header class="sig-card__head">
+        <p class="sig-card__title">第10週「疲れが取れない」より</p>
+        <p class="sig-card__meta">症例はすべて創作です</p>
+      </header>
+      <div class="sig-card__body">
+        <p class="sig-case"><strong>症例:</strong>38歳女性。半年前から疲れが取れない。眠っても回復しない。本人は「自律神経の乱れ」と思って来店。</p>
+        <div class="sig-step">
+          <h3><span class="sig-num">❶</span>最初に何を聞くか</h3>
+          <p class="sig-quote">「何をすると、いちばんつらいですか」</p>
+          <p class="sig-quote-cap">── 陰山先生が最初に聞く一言。疲労の「質」が、原因候補の並べ方を決めます。</p>
+        </div>
+        <div class="sig-step">
+          <h3><span class="sig-num">❷</span>どの情報で判断が変わるか</h3>
+          <p>半年で意図せず体重が5%以上減っていたら、判断が変わる。</p>
+        </div>
+        <div class="sig-step">
+          <h3><span class="sig-num">❸</span>何を行い、何を行わないか</h3>
+          <div class="sig-dd">
+            <div class="do"><b>やる</b>睡眠の質を整える設計</div>
+            <div class="dont"><b>やらない</b>いきなり運動を勧める</div>
+          </div>
+        </div>
+        <div class="sig-step">
+          <h3><span class="sig-num">❹</span>次の一手は何か</h3>
+          <p>疲労だけなら2週間のセルフケア。レッドフラッグが1つでもあれば、当日受診。</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 7. curriculum -->
+<section class="sec bg-surface" id="curriculum">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">Curriculum</p>
+      <h2 class="sec-title">30週間のカリキュラム</h2>
+      <p class="sec-lead">4つのフェーズで、見立ての土台から医療連携までを段階的に。入会日を起点に第1週が即時解放、以後7日ごとに次の週が解放されます。</p>
+    </div>
+
+    <div class="cur-phase ph1 rv">
+      <div class="cur-phase__label">
+        <span class="cur-phase__num">PHASE 1</span>
+        <h3 class="cur-phase__name">見立てと安全判断の土台</h3>
+        <span class="cur-phase__range">第1〜7週</span>
+      </div>
+      <ul class="cur-weeks">
+        <li class="cur-week"><span class="cur-wn">W1</span>スクールの目的と、医療連携セラピストとは</li>
+        <li class="cur-week"><span class="cur-wn">W2</span>陰山式・判断モデル</li>
+        <li class="cur-week"><span class="cur-wn">W3</span>症状・病名・原因・病態の違い</li>
+        <li class="cur-week"><span class="cur-wn">W4</span>時間軸と問診</li>
+        <li class="cur-week"><span class="cur-wn">W5</span>レッドフラッグと緊急度</li>
+        <li class="cur-week"><span class="cur-wn">W6</span>既往歴・服薬・手術と施術リスク</li>
+        <li class="cur-week"><span class="cur-wn">W7</span>セルフケアの役割と限界</li>
+      </ul>
+    </div>
+
+    <div class="cur-phase ph2 rv">
+      <div class="cur-phase__label">
+        <span class="cur-phase__num">PHASE 2</span>
+        <h3 class="cur-phase__name">現場で多い症状</h3>
+        <span class="cur-phase__range">第8〜23週</span>
+      </div>
+      <ul class="cur-weeks">
+        <li class="cur-week"><span class="cur-wn">W8</span>首肩がこる</li>
+        <li class="cur-week"><span class="cur-wn">W9</span>腰が痛い</li>
+        <li class="cur-week"><span class="cur-wn">W10</span>疲れが取れない</li>
+        <li class="cur-week"><span class="cur-wn">W11</span>眠れない</li>
+        <li class="cur-week"><span class="cur-wn">W12</span>気分が落ちる</li>
+        <li class="cur-week"><span class="cur-wn">W13</span>頭が痛い</li>
+        <li class="cur-week"><span class="cur-wn">W14</span>めまいがする</li>
+        <li class="cur-week"><span class="cur-wn">W15</span>動悸・息切れがする</li>
+        <li class="cur-week"><span class="cur-wn">W16</span>しびれる・力が入らない<span class="cur-badge">最重要</span></li>
+        <li class="cur-week"><span class="cur-wn">W17</span>手指が痛い・こわばる</li>
+        <li class="cur-week"><span class="cur-wn">W18</span>お腹の調子が悪い</li>
+        <li class="cur-week"><span class="cur-wn">W19</span>冷える・むくむ</li>
+        <li class="cur-week"><span class="cur-wn">W20</span>太った・痩せた・大きくならない</li>
+        <li class="cur-week"><span class="cur-wn">W21</span>月経・更年期の不調</li>
+        <li class="cur-week"><span class="cur-wn">W22</span>妊活・男性の悩み</li>
+        <li class="cur-week"><span class="cur-wn">W23</span>肌・毛髪の悩み</li>
+      </ul>
+    </div>
+
+    <div class="cur-phase ph3 rv">
+      <div class="cur-phase__label">
+        <span class="cur-phase__num">PHASE 3</span>
+        <h3 class="cur-phase__name">疾患と医療連携</h3>
+        <span class="cur-phase__range">第24〜28週</span>
+      </div>
+      <ul class="cur-weeks">
+        <li class="cur-week"><span class="cur-wn">W24</span>認知機能・うつ・発達特性</li>
+        <li class="cur-week"><span class="cur-wn">W25</span>脳卒中・パーキンソン病</li>
+        <li class="cur-week"><span class="cur-wn">W26</span>多発性硬化症・ALS・自己免疫疾患</li>
+        <li class="cur-week"><span class="cur-wn">W27</span>がん治療中・免疫抑制中の方</li>
+        <li class="cur-week"><span class="cur-wn">W28</span>幹細胞・エクソソーム・先端医療<span class="cur-badge cur-badge--gold">先生の専門</span></li>
+      </ul>
+    </div>
+
+    <div class="cur-phase ph4 rv">
+      <div class="cur-phase__label">
+        <span class="cur-phase__num">PHASE 4</span>
+        <h3 class="cur-phase__name">統合実践</h3>
+        <span class="cur-phase__range">第29〜30週</span>
+      </div>
+      <ul class="cur-weeks">
+        <li class="cur-week"><span class="cur-wn">W29</span>総合症例カンファレンス</li>
+        <li class="cur-week"><span class="cur-wn">W30</span>最終実践・患者説明・医療連携(修了課題:30週分のセルフケア設計シートを1冊に)</li>
+      </ul>
+    </div>
+
+    <div class="cur-weekcard rv">
+      <h3>毎週の学び方(各週の構成)</h3>
+      <p>週1本、15〜20分の動画を軸に、判断と設計の練習まで。</p>
+      <div class="cur-weekgrid">
+        <div class="cur-wk-item">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.5" style="fill:none;stroke:currentColor;stroke-width:1.6"/><path d="M8.2 6.8v6.4l5.2-3.2z" style="fill:currentColor"/></svg>
+          <b>本編動画</b><span>15〜20分。症状の背景を医学的に整理します</span>
+        </div>
+        <div class="cur-wk-item">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 10s3-5.4 8-5.4S18 10 18 10s-3 5.4-8 5.4S2 10 2 10z" style="fill:none;stroke:currentColor;stroke-width:1.6"/><circle cx="10" cy="10" r="2.4" style="fill:currentColor"/></svg>
+          <b>「陰山先生なら、ここを見る」</b><span>先生の判断過程を、毎週4つの質問で</span>
+        </div>
+        <div class="cur-wk-item">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="4" width="9" height="9" rx="1.5" style="fill:none;stroke:currentColor;stroke-width:1.6"/><rect x="8.5" y="8" width="9" height="9" rx="1.5" style="fill:none;stroke:currentColor;stroke-width:1.6"/></svg>
+          <b>資格別パート</b><span>A版/B版・各5分。自分の業務範囲で確認します</span>
+        </div>
+        <div class="cur-wk-item">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="2.5" width="12" height="15" rx="1.5" style="fill:none;stroke:currentColor;stroke-width:1.6"/><path d="M7 7h6M7 10h6M7 13h4" style="stroke:currentColor;stroke-width:1.4;stroke-linecap:round"/></svg>
+          <b>補助教材</b><span>問診チェックシート・レッドフラッグ一覧・説明例 など</span>
+        </div>
+        <div class="cur-wk-item">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="2" style="fill:none;stroke:currentColor;stroke-width:1.6"/><path d="M6.5 10.4l2.4 2.4 4.6-5" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"/></svg>
+          <b>確認テスト</b><span>理解の定着を、その場で確認します</span>
+        </div>
+        <div class="cur-wk-item">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M12.8 3.4l3.8 3.8L7.4 16.4H3.6v-3.8z" style="fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round"/></svg>
+          <b>セルフケア設計シート課題</b><span>目的・量・中止基準まで、個別に設計する課題</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. tiers -->
+<section class="sec bg-ivory">
+  <div class="wrap">
+    <div class="sec-head--center rv">
+      <p class="eyebrow">Course Structure</p>
+      <h2 class="sec-title">国家資格の有無を問わず、同じ本編で。</h2>
+      <p class="sec-lead">体の中で何が起きているかの理解に、資格の違いはありません。3層構造で、全員が同じ土台に立ちながら、自分の業務範囲は自分の版で確認します。</p>
+    </div>
+    <div class="tier-stack">
+      <div class="tier1 rv">
+        <span class="tier-label">層 1|全員共通</span>
+        <h3>共通本編(全30週)</h3>
+        <p>全員同じ内容。体の中で何が起きているかの理解に、資格の違いはありません。</p>
+      </div>
+      <div class="tier2">
+        <div class="rv">
+          <span class="tier-label">層 2|A版</span>
+          <h3>国家資格者向け(各週末尾5分)</h3>
+          <p>施術範囲・禁忌・医師への照会・施術録</p>
+        </div>
+        <div class="rv">
+          <span class="tier-label">層 2|B版</span>
+          <h3>民間資格・無資格向け(各週末尾5分)</h3>
+          <p>扱える範囲の見極め・受診の勧め方・避けるべき表現</p>
+        </div>
+      </div>
+      <div class="tier3 rv">
+        <span class="tier-label">層 3|資格者限定</span>
+        <h3><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5" style="fill:none;stroke:currentColor;stroke-width:1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" style="fill:none;stroke:currentColor;stroke-width:1.5"/></svg>資格者限定シリーズ(6本)</h3>
+        <p>国家資格の確認が済んだ方のみ視聴できます。</p>
+        <ul>
+          <li>業務範囲の法令</li>
+          <li>医師の同意書と療養費</li>
+          <li>施術録の書き方</li>
+          <li>医師への照会と情報提供の作法</li>
+          <li>柔整領域の判断</li>
+          <li>他職種との連携実務</li>
+        </ul>
+      </div>
+    </div>
+    <p class="tier-msg rv">同じ本編で学び、自分の業務範囲は、自分の版で確認する。</p>
+  </div>
+</section>
+
+<!-- 9. abilities + certificate -->
+<section class="sec bg-surface">
+  <div class="wrap">
+    <div class="sec-head--center rv">
+      <p class="eyebrow">Outcome</p>
+      <h2 class="sec-title">修了時に身につく、8つの能力。</h2>
+    </div>
+    <div class="ab-grid">
+      <div class="ab-card rv"><p class="ab-num">①</p><p class="ab-name">情報収集力</p><p class="ab-q">「聞き取れる」</p></div>
+      <div class="ab-card rv"><p class="ab-num">②</p><p class="ab-name">原因整理力</p><p class="ab-q">「決めつけない」</p></div>
+      <div class="ab-card rv"><p class="ab-num">③</p><p class="ab-name">安全判断力</p><p class="ab-q">「危険に気づく」</p></div>
+      <div class="ab-card rv"><p class="ab-num">④</p><p class="ab-name">業務範囲判断力</p><p class="ab-q">「自分の範囲を知る」</p></div>
+      <div class="ab-card rv"><p class="ab-num">⑤</p><p class="ab-name">施術設計力</p><p class="ab-q">「目的を持つ」</p></div>
+      <div class="ab-card rv"><p class="ab-num">⑥</p><p class="ab-name">セルフケア設計力</p><p class="ab-q">「設計できる」</p></div>
+      <div class="ab-card rv"><p class="ab-num">⑦</p><p class="ab-name">医療連携力</p><p class="ab-q">「つなげる」</p></div>
+      <div class="ab-card rv"><p class="ab-num">⑧</p><p class="ab-name">情報評価力</p><p class="ab-q">「見極める」</p></div>
+    </div>
+    <div class="cert">
+      <div class="rv">
+        <svg class="cert-svg" viewBox="0 0 420 300" role="img" aria-label="修了証のイメージ(サンプル)">
+          <rect x="6" y="6" width="408" height="288" rx="8" style="fill:#FFFFFF;stroke:#A8894F;stroke-width:2.5"/>
+          <rect x="18" y="18" width="384" height="264" rx="4" style="fill:none;stroke:#A8894F;stroke-width:1;opacity:.55"/>
+          <text x="210" y="52" text-anchor="middle" font-family="'Hiragino Mincho ProN','Yu Mincho',serif" font-size="12" letter-spacing="2" style="fill:#667085">陰山式MT連携オンラインスクール</text>
+          <text x="210" y="106" text-anchor="middle" font-family="'Hiragino Mincho ProN','Yu Mincho',serif" font-size="36" letter-spacing="14" style="fill:#17324D">修了証</text>
+          <line x1="120" y1="150" x2="300" y2="150" style="stroke:#C4CCD4;stroke-width:1"/>
+          <text x="210" y="144" text-anchor="middle" font-family="'Hiragino Mincho ProN','Yu Mincho',serif" font-size="13" style="fill:#98A2B3">お名前が入ります</text>
+          <text x="210" y="182" text-anchor="middle" font-size="10.5" font-family="sans-serif" style="fill:#667085">全30週の修了条件を達成し、運営の承認を得たことを証します(サンプル)</text>
+          <text x="90" y="252" font-size="10.5" font-family="sans-serif" style="fill:#667085">2026年◯月◯日</text>
+          <circle cx="330" cy="234" r="26" style="fill:#F3EDDF;stroke:#A8894F;stroke-width:1.5"/>
+          <text x="330" y="240" text-anchor="middle" font-family="'Hiragino Mincho ProN','Yu Mincho',serif" font-size="14" style="fill:#A8894F">修了</text>
+          <path d="M320 258l-6 18 10-6 6 10 5-17z" style="fill:#A8894F;opacity:.65"/>
+        </svg>
+      </div>
+      <div class="cert-text rv">
+        <h3>修了証を発行します</h3>
+        <p>修了条件の達成と運営の承認により、修了証を発行します。学んだ判断の型を、お客様と医療への信頼の架け橋に。</p>
+        <p class="cert-caution">※修了証は、国家資格または医療資格に相当する認定ではありません。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. pricing -->
+<section class="sec price">
+  <div class="wrap">
+    <div class="sec-head--center rv">
+      <p class="eyebrow eyebrow--light">Pricing</p>
+      <h2 class="sec-title">料金プラン</h2>
+      <p class="sec-lead">全30週(約7ヶ月)。どちらのプランも、学べる内容は同じです。</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card rv">
+        <h3 class="price-name">月額プラン</h3>
+        <p class="price-amt">19,800<small>円/月(仮)</small></p>
+        <p class="price-sub">税込/受講期間 約7ヶ月</p>
+        <ul class="price-feats">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg>全30週カリキュラム</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg>月1回のライブQ&A</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg>補助教材ダウンロード</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg>修了証発行</li>
+        </ul>
+      </div>
+      <div class="price-card price-card--reco rv">
+        <span class="price-ribbon">おすすめ</span>
+        <h3 class="price-name">一括プラン</h3>
+        <p class="price-amt">99,000<small>円(仮)</small></p>
+        <p class="price-sub">税込/月額プランより2ヶ月分お得</p>
+        <ul class="price-feats">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg>全30週カリキュラム</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg>月1回のライブQ&A</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg>補助教材ダウンロード</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg>修了証発行</li>
+          <li class="gold"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5l2 4.1 4.5.6-3.3 3.2.8 4.5L8 11.8l-4 2.1.8-4.5L1.5 6.2 6 5.6z" style="fill:currentColor"/></svg>特典:陰山先生の月例ライブQ&A 優先質問権(仮)</li>
+        </ul>
+      </div>
+    </div>
+    <p class="price-note">※価格・特典は検討中のサンプル表示です</p>
+  </div>
+</section>
+
+<!-- 11. faq -->
+<section class="sec bg-ivory">
+  <div class="wrap">
+    <div class="sec-head--center rv">
+      <p class="eyebrow">FAQ</p>
+      <h2 class="sec-title">よくあるご質問</h2>
+    </div>
+    <div class="faq-list rv">
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a1"><span class="qm">Q</span>医学の知識がなくても付いていけますか?<svg class="chev" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 7l5 5 5-5" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg></button>
+        <div class="faq-a" id="faq-a1"><p>症状を入口に基礎から整理していくため、専門用語の予習は不要です。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a2"><span class="qm">Q</span>国家資格を持っていませんが受講できますか?<svg class="chev" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 7l5 5 5-5" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg></button>
+        <div class="faq-a" id="faq-a2"><p>受講できます。本編は全員共通で、資格の有無に応じた資格別パート(A版/B版)を用意しています。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a3"><span class="qm">Q</span>働きながらでも続けられますか?<svg class="chev" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 7l5 5 5-5" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg></button>
+        <div class="faq-a" id="faq-a3"><p>週1本・15〜20分の動画が基本です。7日ごとの解放なので、まとめて焦って見る必要はありません。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a4"><span class="qm">Q</span>動画は後からでも見られますか?<svg class="chev" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 7l5 5 5-5" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg></button>
+        <div class="faq-a" id="faq-a4"><p>解放済みの週は、受講期間中いつでも視聴できます。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a5"><span class="qm">Q</span>受講すると、症状の診断ができるようになりますか?<svg class="chev" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 7l5 5 5-5" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg></button>
+        <div class="faq-a" id="faq-a5"><p>なりません。診断は医師の仕事です。本スクールで学ぶのは「見立て・施術判断・医療につなぐ判断」です。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a6"><span class="qm">Q</span>修了すると資格が取れますか?<svg class="chev" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 7l5 5 5-5" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg></button>
+        <div class="faq-a" id="faq-a6"><p>修了証を発行しますが、国家資格や医療資格に相当する認定ではありません。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a7"><span class="qm">Q</span>途中で解約できますか?<svg class="chev" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 7l5 5 5-5" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg></button>
+        <div class="faq-a" id="faq-a7"><p>可能です(解約条件は仮のサンプルです)。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a8"><span class="qm">Q</span>支払い方法は?<svg class="chev" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 7l5 5 5-5" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></svg></button>
+        <div class="faq-a" id="faq-a8"><p>クレジットカード・銀行振込を予定しています(仮)。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. not taught -->
+<section class="sec bg-surface">
+  <div class="wrap">
+    <div class="sec-head--center rv">
+      <p class="eyebrow">Our Promise</p>
+      <h2 class="sec-title">このスクールが、教えないこと。</h2>
+      <p class="sec-lead">できることと同じくらい、できないこと・やらないことをはっきりさせることが、医療との信頼の第一歩だと考えています。</p>
+    </div>
+    <ul class="ng-list rv">
+      <li class="ng-item"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.5" style="fill:none;stroke:currentColor;stroke-width:1.6"/><path d="M4.2 13.8L13.8 4.2" style="stroke:currentColor;stroke-width:1.6"/></svg>病名を当てること</li>
+      <li class="ng-item"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.5" style="fill:none;stroke:currentColor;stroke-width:1.6"/><path d="M4.2 13.8L13.8 4.2" style="stroke:currentColor;stroke-width:1.6"/></svg>セラピストが医学的診断をすること</li>
+      <li class="ng-item"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.5" style="fill:none;stroke:currentColor;stroke-width:1.6"/><path d="M4.2 13.8L13.8 4.2" style="stroke:currentColor;stroke-width:1.6"/></svg>すべての症状を施術でよくすること</li>
+      <li class="ng-item"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.5" style="fill:none;stroke:currentColor;stroke-width:1.6"/><path d="M4.2 13.8L13.8 4.2" style="stroke:currentColor;stroke-width:1.6"/></svg>医療機関の受診を不要にすること</li>
+      <li class="ng-item"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.5" style="fill:none;stroke:currentColor;stroke-width:1.6"/><path d="M4.2 13.8L13.8 4.2" style="stroke:currentColor;stroke-width:1.6"/></svg>標準医療の代わりに代替療法を勧めること</li>
+      <li class="ng-item"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.5" style="fill:none;stroke:currentColor;stroke-width:1.6"/><path d="M4.2 13.8L13.8 4.2" style="stroke:currentColor;stroke-width:1.6"/></svg>先端医療や特定商品を無条件に推奨すること</li>
+      <li class="ng-item"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.5" style="fill:none;stroke:currentColor;stroke-width:1.6"/><path d="M4.2 13.8L13.8 4.2" style="stroke:currentColor;stroke-width:1.6"/></svg>国家資格や医療資格に相当する認定を与えること</li>
+    </ul>
+    <div class="ng-disc rv">
+      <h3>医療上のご注意</h3>
+      <p>本スクールは、医療診断・治療をオンラインで提供するものではありません。講義内容は施術・セルフケア・医療連携の判断を学ぶための教育コンテンツであり、個別の症状に対する医学的助言を行うものではありません。受講は医療機関の受診に代わるものではなく、体調に不安がある場合は、医療機関へのご相談を優先してください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13. closing cta -->
+<section class="sec close" id="closing">
+  <div class="wrap">
+    <div class="rv">
+      <h2>その手技に、医学の言葉を。</h2>
+      <p>伝承療法と最新医学を、現場で使える判断へ。30週間、医師と一緒に考え抜きます。</p>
+      <a class="btn btn--teal" href="#">無料説明会に申し込む(仮)</a>
+      <p class="close-note">第1期の募集開始をお知らせします(仮)</p>
+    </div>
+  </div>
+</section>
+
+<!-- 14. footer -->
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot-name">陰山式MT連携オンラインスクール</p>
+    <p class="foot-op">運営:株式会社Prorium</p>
+    <ul class="foot-links">
+      <li><a href="#">特定商取引法に基づく表記</a></li>
+      <li><a href="#">プライバシーポリシー</a></li>
+      <li><a href="#">利用規約</a></li>
+      <li><a href="#">医療に関する免責事項</a></li>
+    </ul>
+    <p class="foot-mock">このページはデザインモックです。表示内容(価格・実績・プロフィール・症例等)はすべて仮のサンプルです。症例はすべて創作です。</p>
+  </div>
+</footer>
+
+<!-- sticky cta bar -->
+<div class="ctabar" id="ctabar" aria-hidden="true">
+  <p class="ctabar__text">陰山式MT連携オンラインスクール|全30週</p>
+  <a class="btn btn--teal" href="#closing">無料説明会に申し込む(仮)</a>
+</div>
+
+<!-- mock nav -->
+<nav class="mock-nav" aria-label="モック切替">
+  <span class="mock-nav__label">デザインモック</span>
+  <a href="https://prorium1.github.io/mt-school-mock/lp.html" aria-current="page">LP</a>
+  <a href="https://prorium1.github.io/mt-school-mock/student-dashboard.html">受講生画面</a>
+  <a href="https://prorium1.github.io/mt-school-mock/admin.html">運営管理画面</a>
+</nav>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* scroll reveal */
+  var rvEls = document.querySelectorAll('.rv');
+  if (reduced || !('IntersectionObserver' in window)) {
+    rvEls.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    rvEls.forEach(function(el){
+      if (el.getBoundingClientRect().top < window.innerHeight - 40) {
+        el.classList.add('in');
+      } else {
+        io.observe(el);
+      }
+    });
+  }
+
+  /* faq accordion */
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', function(){
+      var open = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  /* sticky cta bar: show after hero, hide over closing */
+  var bar = document.getElementById('ctabar');
+  var hero = document.getElementById('hero');
+  var closing = document.getElementById('closing');
+  if (bar && hero && 'IntersectionObserver' in window) {
+    var heroOut = false, closeIn = false;
+    var update = function(){
+      var on = heroOut && !closeIn;
+      bar.classList.toggle('on', on);
+      bar.setAttribute('aria-hidden', on ? 'false' : 'true');
+      document.body.classList.toggle('ctabar-on', on);
+    };
+    new IntersectionObserver(function(es){ heroOut = !es[es.length-1].isIntersecting; update(); }, { threshold: 0 }).observe(hero);
+    if (closing) {
+      new IntersectionObserver(function(es){ closeIn = es[es.length-1].isIntersecting; update(); }, { threshold: .15 }).observe(closing);
+    }
+  }
+})();
+</script>

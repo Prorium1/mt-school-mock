@@ -1,0 +1,1243 @@
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>マイページ|陰山式MT連携オンラインスクール</title>
+<style>
+/* ===== Tokens ===== */
+:root{
+  --navy-950:#0D1F30;
+  --navy-900:#122A40;
+  --navy:#17324D;
+  --navy-700:#22456A;
+  --teal:#1F7A72;
+  --teal-600:#186158;
+  --teal-100:#E2F0EE;
+  --teal-300:#8FC8C1;
+  --sage:#DDEBE6;
+  --gold:#A8894F;
+  --gold-100:#F3EDDF;
+  --ivory:#F7F5EF;
+  --surface:#FFFFFF;
+  --ink:#1C2833;
+  --slate:#667085;
+  --border:#DDE2E7;
+  --border-strong:#C4CCD4;
+  --success:#067647; --success-bg:#EAF5EF;
+  --warning:#B54708; --warning-bg:#FBEEE3;
+  --danger:#B42318;  --danger-bg:#FBEAE8;
+  --font-serif:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif;
+  --font-sans:"Hiragino Kaku Gothic ProN","Yu Gothic Medium","YuGothic","Noto Sans JP",-apple-system,"Segoe UI",sans-serif;
+  --radius:10px; --radius-lg:16px;
+  --shadow-sm:0 1px 2px rgba(18,42,64,.06);
+  --shadow-md:0 4px 16px rgba(18,42,64,.10);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+
+/* ===== Base ===== */
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--font-serif);font-weight:600;letter-spacing:.02em;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:inherit}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+a,button{transition:background-color .18s var(--ease),color .18s var(--ease),border-color .18s var(--ease),box-shadow .18s var(--ease),transform .18s var(--ease)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.eyebrow{font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+
+/* ===== App shell ===== */
+.app{display:flex;min-height:100vh}
+.main-col{flex:1;min-width:0;display:flex;flex-direction:column}
+.content{width:100%;max-width:1160px;margin:0 auto;padding:0 32px 72px;display:flex;flex-direction:column;gap:24px}
+
+/* ===== Sidebar ===== */
+.sidebar{position:sticky;top:0;height:100vh;width:240px;flex-shrink:0;background:var(--navy);color:#fff;display:flex;flex-direction:column;overflow-y:auto}
+.sidebar__brand{padding:28px 20px 24px;display:flex;align-items:center;gap:12px}
+.brand-seal{width:36px;height:36px;flex-shrink:0;border:1px solid rgba(255,255,255,.4);border-radius:8px;display:grid;place-items:center;font-family:var(--font-serif);font-size:18px}
+.sidebar__brand-name{font-family:var(--font-serif);font-size:14px;line-height:1.5;letter-spacing:.04em}
+.sidebar__nav{flex:1;padding:8px 0;display:flex;flex-direction:column;gap:2px}
+.sidebar__nav a{display:flex;align-items:center;gap:12px;padding:11px 20px 11px 17px;color:rgba(255,255,255,.82);text-decoration:none;font-size:14px;border-left:3px solid transparent}
+.sidebar__nav a:hover{background:rgba(255,255,255,.07);color:#fff}
+.sidebar__nav a.is-active{background:rgba(255,255,255,.10);border-left-color:var(--gold);color:#fff;font-weight:600}
+.nav-badge{margin-left:auto;background:var(--teal);color:#fff;font-size:11px;font-weight:700;line-height:1;padding:3px 7px;border-radius:999px}
+.sidebar__user{border-top:1px solid rgba(255,255,255,.14);padding:16px 20px;display:flex;align-items:center;gap:12px}
+.avatar{width:38px;height:38px;flex-shrink:0;border-radius:50%;background:var(--sage);color:var(--navy);font-family:var(--font-serif);font-size:16px;display:grid;place-items:center}
+.sidebar__user-name{font-size:14px;font-weight:600;line-height:1.4}
+.user-badge{display:inline-block;margin-top:4px;background:var(--teal);color:#fff;font-size:10px;font-weight:600;letter-spacing:.04em;padding:2px 8px;border-radius:999px}
+
+/* ===== Topbar ===== */
+.topbar{max-width:1160px;width:100%;margin:0 auto;padding:28px 32px 20px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.topbar h1{font-size:22px}
+.topbar__date{margin-top:4px;font-size:13px;color:var(--slate)}
+.topbar__actions{display:flex;align-items:center;gap:12px}
+.bell-btn{position:relative;width:40px;height:40px;border:1px solid var(--border);border-radius:50%;background:var(--surface);color:var(--ink);display:grid;place-items:center}
+.bell-btn:hover{border-color:var(--border-strong);box-shadow:var(--shadow-sm)}
+.bell-btn::after{content:"";position:absolute;top:9px;right:10px;width:7px;height:7px;border-radius:50%;background:var(--danger);border:1.5px solid var(--surface)}
+.topbar .avatar{width:40px;height:40px;border:1px solid var(--border)}
+
+/* ===== Cards ===== */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:24px}
+.card__head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px}
+.card__title{font-size:17px}
+.card__link{font-size:12px;color:var(--teal);text-decoration:none;font-weight:600;letter-spacing:.04em}
+.card__link:hover{color:var(--teal-600);text-decoration:underline}
+
+/* ===== Hero ===== */
+.hero{background:linear-gradient(135deg,var(--navy-900),var(--navy) 65%);color:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:36px 40px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(230px,1fr);gap:36px;align-items:center}
+.hero__eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--teal-300)}
+.hero__title{font-size:32px;margin:10px 0 6px;line-height:1.35}
+.hero__question{font-size:13px;color:rgba(255,255,255,.72);border-left:2px solid var(--teal-300);padding-left:10px;margin-bottom:22px}
+.vprog{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.vprog__bar{flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,.18);overflow:hidden}
+.vprog__fill{display:block;width:68%;height:100%;border-radius:999px;background:var(--teal-300)}
+.vprog__time{font-size:12px;color:rgba(255,255,255,.75);white-space:nowrap;font-variant-numeric:tabular-nums}
+.btn-resume{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border:none;border-radius:999px;padding:13px 26px;font-size:15px;font-weight:700;letter-spacing:.04em}
+.btn-resume:hover{background:var(--teal-600);transform:translateY(-1px)}
+.btn-resume:active{transform:translateY(0)}
+.btn-resume .ic{width:16px;height:16px}
+.hero__thumb{position:relative;aspect-ratio:16/9;border-radius:var(--radius);background:var(--navy-700);display:grid;place-items:center;overflow:hidden}
+.hero__thumb::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(143,200,193,.18),transparent 60%)}
+.play-circle{position:relative;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);display:grid;place-items:center;color:#fff}
+.play-circle .ic{width:22px;height:22px;margin-left:3px}
+.hero__thumb-cap{position:absolute;left:12px;bottom:10px;font-size:11px;color:rgba(255,255,255,.65);letter-spacing:.06em}
+.hero__thumb-dur{position:absolute;right:10px;bottom:10px;font-size:11px;background:rgba(13,31,48,.7);padding:2px 8px;border-radius:6px;font-variant-numeric:tabular-nums}
+
+/* ===== Content grid ===== */
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}
+.col-main{display:flex;flex-direction:column;gap:24px;min-width:0}
+.col-side{display:flex;flex-direction:column;gap:24px;min-width:0}
+
+/* ===== Summary row ===== */
+.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:20px;display:flex;flex-direction:column;gap:6px}
+.stat__label{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--slate)}
+.ring-wrap{position:relative;width:104px;height:104px;margin:6px auto 2px}
+.ring{width:104px;height:104px;display:block}
+.ring__track{fill:none;stroke:var(--teal-100);stroke-width:10}
+.ring__fill{fill:none;stroke:var(--teal);stroke-width:10;stroke-linecap:round}
+.ring-wrap__num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:1px;font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
+.ring-wrap__num small{font-size:12px;font-weight:600;color:var(--slate)}
+.stat__sub{text-align:center;font-size:13px;color:var(--slate)}
+.stat__big{font-size:19px;font-weight:700;line-height:1.4}
+.stat__big small{display:block;font-size:12px;font-weight:600;color:var(--slate);margin-top:2px}
+.pill{display:inline-block;align-self:flex-start;background:var(--teal-100);color:var(--teal-600);font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.04em}
+.stat__num{font-size:30px;font-weight:700;line-height:1.2;font-variant-numeric:tabular-nums}
+.stat__num small{font-size:14px;font-weight:600;margin-left:2px}
+
+/* ===== Tasks ===== */
+.tasks{display:flex;flex-direction:column}
+.task{display:flex;align-items:center;gap:14px;padding:13px 10px;border-radius:var(--radius);text-decoration:none;color:inherit}
+.task:hover{background:var(--ivory)}
+.task + .task{border-top:1px solid var(--border)}
+.task:hover + .task,.task + .task:hover{border-top-color:transparent}
+.task__ic{width:38px;height:38px;flex-shrink:0;border-radius:10px;background:var(--teal-100);color:var(--teal-600);display:grid;place-items:center}
+.task__ic .ic{width:18px;height:18px}
+.task__name{flex:1;min-width:0;font-size:14px;font-weight:600}
+.task__name small{display:block;font-size:12px;font-weight:400;color:var(--slate);margin-top:1px}
+.badge{flex-shrink:0;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.03em}
+.badge--warn{background:var(--warning-bg);color:var(--warning)}
+.badge--draft{background:var(--gold-100);color:#7A5F30}
+.badge--todo{background:#EDF1F5;color:#586170}
+.badge--ok{background:var(--success-bg);color:var(--success)}
+.task__arrow{color:var(--border-strong)}
+.task:hover .task__arrow{color:var(--teal);transform:translateX(2px)}
+
+/* ===== Roadmap ===== */
+.roadmap-note{font-size:12px;color:var(--slate)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin:2px 0 20px;font-size:12px;color:var(--slate)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:14px;border-radius:4px;flex-shrink:0}
+.legend .l-done{background:var(--teal)}
+.legend .l-now{background:#fff;border:2px solid var(--teal)}
+.legend .l-lock{background:#fff;border:1.5px solid var(--border)}
+.phase{position:relative;padding:0 0 4px 18px;border-left:3px solid var(--phase,var(--border))}
+.phase + .phase{margin-top:26px}
+.phase--1{--phase:var(--navy)}
+.phase--2{--phase:var(--teal)}
+.phase--3{--phase:var(--gold)}
+.phase--4{--phase:var(--ink)}
+.phase__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin-bottom:12px}
+.phase__chip{background:var(--phase);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 10px;border-radius:6px;align-self:center}
+.phase--3 .phase__chip{background:#8A6E3A}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.phase__name{font-size:15px}
+.phase__range{font-size:12px;color:var(--slate);font-variant-numeric:tabular-nums}
+.phase__count{margin-left:auto;font-size:12px;color:var(--slate);font-variant-numeric:tabular-nums}
+.phase__weeks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 20px}
+.week{display:flex;align-items:center;gap:10px;padding:5px 6px;border-radius:8px;text-decoration:none;color:inherit;min-width:0}
+a.week:hover{background:var(--ivory)}
+.week__node{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;display:grid;place-items:center;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.week--done .week__node{background:var(--phase);color:#fff}
+.week--current .week__node{background:#fff;border:2px solid var(--phase);color:var(--phase);box-shadow:0 0 0 4px rgba(31,122,114,.14)}
+.week--current .week__node::after{content:"";position:absolute;inset:-2px;border-radius:7px;border:2px solid var(--phase);animation:pulse 2.2s var(--ease) infinite;opacity:0;pointer-events:none}
+@keyframes pulse{0%{transform:scale(1);opacity:.65}70%{transform:scale(1.55);opacity:0}100%{transform:scale(1.55);opacity:0}}
+.week--locked .week__node{border:1.5px solid var(--border);color:var(--border-strong)}
+.week--locked .week__node .ic{width:13px;height:13px}
+.week__title{font-size:13px;line-height:1.45;min-width:0}
+.week--current .week__title{font-weight:700}
+.week--locked .week__title{color:var(--slate);opacity:.75}
+.now-label{flex-shrink:0;background:var(--teal);color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;padding:2px 9px;border-radius:999px}
+
+/* ===== Events ===== */
+.event{display:flex;gap:14px;align-items:flex-start;padding:12px 0}
+.event + .event{border-top:1px solid var(--border)}
+.event__date{flex-shrink:0;width:50px;text-align:center;border:1px solid var(--border);border-radius:10px;padding:6px 0 7px;line-height:1.15}
+.event__date b{display:block;font-size:19px;font-variant-numeric:tabular-nums}
+.event__date span{font-size:10px;color:var(--slate);letter-spacing:.06em}
+.event__body{flex:1;min-width:0}
+.event__name{font-size:13.5px;font-weight:600;line-height:1.5}
+.event__meta{font-size:12px;color:var(--slate);margin-top:2px}
+.event__body .badge{display:inline-block;margin-top:8px}
+.btn-sm{display:inline-block;margin-top:8px;background:var(--surface);color:var(--teal-600);border:1.5px solid var(--teal);border-radius:999px;padding:5px 16px;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:.04em}
+.btn-sm:hover{background:var(--teal);color:#fff}
+
+/* ===== Notices ===== */
+.notice{display:block;padding:11px 4px;text-decoration:none;color:inherit;border-radius:8px}
+.notice:hover{background:var(--ivory)}
+.notice + .notice{border-top:1px solid var(--border)}
+.notice__title{position:relative;font-size:13.5px;font-weight:600;line-height:1.5;padding-left:14px}
+.notice__title::before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:var(--border)}
+.notice--unread .notice__title::before{background:var(--teal)}
+.notice__date{font-size:12px;color:var(--slate);margin-top:2px;padding-left:14px}
+
+/* ===== Qualification status ===== */
+.qual{background:var(--success-bg);border:1px solid #CBE5D6;border-radius:var(--radius-lg);padding:20px;display:flex;gap:14px;align-items:flex-start}
+.qual__ic{color:var(--success);margin-top:2px}
+.qual__ic .ic{width:26px;height:26px}
+.qual__title{font-size:14px;font-weight:700;color:var(--success)}
+.qual__sub{font-size:12px;color:var(--ink);margin-top:2px}
+.qual__link{display:inline-flex;align-items:center;gap:4px;margin-top:10px;font-size:12.5px;font-weight:700;color:var(--teal-600);text-decoration:none}
+.qual__link:hover{text-decoration:underline}
+.qual__link .ic{width:14px;height:14px}
+
+/* ===== Completion checklist ===== */
+.comp__head{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.comp__head .ic{width:20px;height:20px;color:var(--gold)}
+.comp-row{padding:8px 0}
+.comp-row + .comp-row{border-top:1px solid var(--border)}
+.comp-row__top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:13px}
+.comp-row__top b{font-weight:600}
+.comp-row__num{color:var(--slate);font-size:12px;font-variant-numeric:tabular-nums}
+.comp-bar{margin-top:7px;height:5px;border-radius:999px;background:var(--ivory);overflow:hidden}
+.comp-bar i{display:block;height:100%;border-radius:999px;background:var(--teal)}
+.comp__foot{margin-top:14px;font-size:11.5px;color:var(--slate);line-height:1.6}
+.comp__link{display:inline-flex;align-items:center;gap:4px;margin-top:12px;font-size:12.5px;font-weight:700;color:var(--teal-600);text-decoration:none}
+.comp__link:hover{text-decoration:underline}
+.comp__link .ic{width:14px;height:14px}
+
+/* ===== Views ===== */
+.view{display:flex;flex-direction:column;gap:24px;animation:viewIn .3s var(--ease)}
+.view[hidden]{display:none!important}
+@keyframes viewIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.crumb{font-size:12.5px;color:var(--slate)}
+.crumb a{color:var(--teal-600);text-decoration:none;font-weight:600}
+.crumb a:hover{text-decoration:underline}
+
+/* ===== Lesson ===== */
+.lesson-note{background:var(--gold-100);border:1px solid #E4D9BF;color:#7A5F30;font-size:12.5px;border-radius:var(--radius);padding:10px 14px}
+.lesson-head{margin-top:-6px}
+.lesson-title{font-size:28px;margin-top:6px}
+.player{position:relative;aspect-ratio:16/9;border-radius:var(--radius);background:linear-gradient(135deg,var(--navy-900),var(--navy-700));display:grid;place-items:center;color:#fff;overflow:hidden}
+.player__cap{position:absolute;left:14px;bottom:14px;font-size:11.5px;color:rgba(255,255,255,.7)}
+.player__dur{position:absolute;right:12px;bottom:14px;font-size:11px;background:rgba(13,31,48,.7);padding:2px 8px;border-radius:6px;font-variant-numeric:tabular-nums}
+.player__bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.2)}
+.player__bar i{display:block;width:68%;height:100%;background:var(--teal-300)}
+.chapters{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chapter{font-size:12px;border:1px solid var(--border);border-radius:999px;padding:5px 12px;color:var(--slate);background:var(--surface)}
+.chapter:hover{border-color:var(--teal);color:var(--teal-600)}
+.chapter.is-on{background:var(--teal-100);border-color:var(--teal);color:var(--teal-600);font-weight:700}
+.keypoints li{position:relative;padding:6px 0 6px 22px;font-size:14.5px;line-height:1.7}
+.keypoints li::before{content:"";position:absolute;left:4px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.kv-quote{font-family:var(--font-serif);font-size:17px;line-height:1.7}
+.kv-row{display:grid;grid-template-columns:30px 1fr;gap:12px;padding:12px 0}
+.kv-row + .kv-row{border-top:1px dashed var(--border)}
+.kv-num{font-family:var(--font-serif);font-size:20px;color:var(--gold);line-height:1.2}
+.kv-q{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--slate)}
+.kv-a{font-size:14.5px;margin-top:3px;line-height:1.7}
+.dl{display:flex;align-items:center;gap:12px;padding:11px 4px}
+.dl + .dl{border-top:1px solid var(--border)}
+.dl__name{flex:1;min-width:0;font-size:14px;font-weight:600}
+.dl__name small{display:block;font-weight:400;font-size:12px;color:var(--slate)}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:999px;padding:10px 22px;font-size:14px;font-weight:700;text-decoration:none}
+.btn-primary:hover{background:var(--teal-600)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:var(--surface);color:var(--navy);border:1.5px solid var(--border-strong);border-radius:999px;padding:9px 20px;font-size:13.5px;font-weight:600;text-decoration:none}
+.btn-ghost:hover{border-color:var(--navy)}
+.quiz-q{font-size:15px;font-weight:600;margin-bottom:4px}
+.quiz-opt{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius);margin-top:8px;cursor:pointer;font-size:14px;line-height:1.6}
+.quiz-opt:hover{border-color:var(--teal)}
+.quiz-opt input{margin-top:4px;accent-color:var(--teal)}
+.quiz-fb{margin-top:14px;border-radius:var(--radius);padding:12px 14px;font-size:13.5px;line-height:1.7}
+.quiz-fb--ok{background:var(--success-bg);color:var(--success)}
+.quiz-fb--ng{background:var(--warning-bg);color:var(--warning)}
+.weeknav{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:13.5px}
+.weeknav__locked{color:var(--slate);display:inline-flex;align-items:center;gap:6px}
+.weeknav__locked .ic{width:14px;height:14px}
+
+/* ===== Curriculum view ===== */
+.week__meta{margin-left:auto;flex-shrink:0;font-size:11.5px;color:var(--slate);font-variant-numeric:tabular-nums;padding-left:8px}
+
+/* ===== Assignments ===== */
+.as-sum{display:flex;flex-wrap:wrap;gap:10px}
+.as-chip{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:7px 16px;font-size:12.5px;color:var(--slate)}
+.as-chip b{color:var(--ink);font-size:14px;margin-right:2px;font-variant-numeric:tabular-nums}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field--wide{grid-column:1/-1}
+.field label{font-size:12.5px;font-weight:700;color:var(--slate)}
+.field input,.field textarea{font-family:inherit;font-size:14px;color:var(--ink);background:var(--ivory);border:1px solid var(--border);border-radius:8px;padding:10px 12px;line-height:1.6}
+.field textarea{resize:vertical;min-height:64px}
+.field input:focus-visible,.field textarea:focus-visible{outline:2px solid var(--teal);outline-offset:1px;background:#fff}
+.form-caution{background:var(--danger-bg);color:var(--danger);font-size:12.5px;border-radius:8px;padding:9px 12px;margin-top:14px;line-height:1.6}
+.form-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+
+/* ===== Certificate ===== */
+.cert-frame{border:1.5px solid var(--gold);border-radius:var(--radius);padding:36px 26px;text-align:center;background:#FCFBF7;max-width:460px;margin:6px auto 0}
+.cert-frame.is-locked{filter:grayscale(.65);opacity:.7}
+.cert-frame .eyebrow{color:var(--gold)}
+.cert-frame h3{font-size:26px;letter-spacing:.35em;padding-left:.35em;margin-top:10px}
+.cert-frame p{font-size:12.5px;color:var(--slate);margin-top:12px}
+.cert-lock-msg{text-align:center;font-size:12.5px;color:var(--slate);margin-top:14px}
+
+/* ===== Profile ===== */
+.prow{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 2px;flex-wrap:wrap}
+.prow + .prow{border-top:1px solid var(--border)}
+.prow dt{color:var(--slate);font-size:13px}
+.prow dd{margin:0;font-weight:600;font-size:14px;text-align:right}
+.switch{position:relative;width:44px;height:24px;flex-shrink:0;border-radius:999px;background:var(--border-strong);border:none;transition:background .2s var(--ease)}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .2s var(--ease)}
+.switch[aria-checked="true"]{background:var(--teal)}
+.switch[aria-checked="true"]::after{transform:translateX(20px)}
+.link-danger{color:var(--danger);font-size:13.5px;text-decoration:none;font-weight:600}
+.link-danger:hover{text-decoration:underline}
+
+/* ===== Notices (expandable) ===== */
+.notice__body{display:none;font-size:13px;color:var(--slate);line-height:1.7;margin-top:6px;padding-left:14px}
+.notice.open .notice__body{display:block}
+.bell-btn.no-unread::after{display:none}
+
+/* ===== Toast ===== */
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);background:var(--navy-950);color:#fff;font-size:13.5px;padding:11px 20px;border-radius:999px;box-shadow:var(--shadow-md);opacity:0;pointer-events:none;transition:opacity .25s var(--ease),transform .25s var(--ease);z-index:80;max-width:88vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:767px){
+  .view{gap:18px}
+  .form-grid{grid-template-columns:1fr}
+  .lesson-title{font-size:22px}
+  .toast{bottom:calc(72px + env(safe-area-inset-bottom))}
+}
+
+/* ===== Mock note / mock nav ===== */
+.mock-note{text-align:center;font-size:12px;color:var(--slate);margin-top:16px}
+.mock-nav{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;align-items:center;gap:2px;background:var(--navy);color:#fff;border-radius:999px;padding:6px 8px 6px 14px;box-shadow:var(--shadow-md);font-size:12px}
+.mock-nav__label{opacity:.55;font-size:10px;letter-spacing:.1em;margin-right:6px;white-space:nowrap}
+.mock-nav a{color:#fff;text-decoration:none;padding:5px 10px;border-radius:999px;white-space:nowrap}
+.mock-nav a:hover{background:rgba(255,255,255,.14)}
+.mock-nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--gold);border-radius:0;font-weight:700}
+
+/* ===== Bottom nav (mobile) ===== */
+.bottom-nav{display:none}
+
+/* ===== Responsive: tablet ===== */
+@media (max-width:1023px){
+  .sidebar{width:84px}
+  .sidebar__brand{padding:20px 0;justify-content:center}
+  .sidebar__brand-name{display:none}
+  .sidebar__nav a{flex-direction:column;gap:5px;padding:12px 4px;font-size:10px;text-align:center;border-left-width:0;border-right:3px solid transparent}
+  .sidebar__nav a.is-active{border-left-color:transparent;border-right-color:var(--gold)}
+  .sidebar__nav a{position:relative}
+  .nav-badge{position:absolute;top:7px;right:16px;margin:0}
+  .sidebar__user{justify-content:center;padding:14px 8px}
+  .sidebar__user-meta{display:none}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .hero{padding:30px 28px;gap:28px}
+  .hero__title{font-size:27px}
+}
+
+/* ===== Responsive: mobile ===== */
+@media (max-width:767px){
+  .sidebar{display:none}
+  .topbar{padding:22px 16px 14px}
+  .topbar h1{font-size:19px}
+  .content{padding:0 16px 132px;gap:18px}
+  .hero{grid-template-columns:1fr;padding:24px 20px;gap:22px}
+  .hero__title{font-size:24px}
+  .summary{grid-template-columns:1fr}
+  .phase__weeks{grid-template-columns:1fr}
+  .phase__count{margin-left:0}
+  .card{padding:20px 16px}
+  .grid{gap:18px}
+  .col-main,.col-side{gap:18px}
+  .bottom-nav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--surface);border-top:1px solid var(--border);padding:6px 8px calc(6px + env(safe-area-inset-bottom))}
+  .bottom-nav a{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 4px;font-size:10px;color:var(--slate);text-decoration:none;border-radius:10px}
+  .bottom-nav a:hover{background:var(--ivory)}
+  .bottom-nav a.is-active{color:var(--teal-600);font-weight:700}
+  .bottom-nav .ic{width:21px;height:21px}
+  .mock-nav{bottom:calc(64px + env(safe-area-inset-bottom));right:12px}
+  .mock-nav__label{display:none}
+}
+
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+
+<svg aria-hidden="true" style="display:none">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5.5C10 4 7.5 3.5 4 3.5v14c3.5 0 6 .5 8 2 2-1.5 4.5-2 8-2v-14c-3.5 0-6 .5-8 2Z"/><path d="M12 5.5v14"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.5h6V4"/><path d="m9 13.5 2 2 4-4.5"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2.5h-15Z"/><path d="M10 21a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="m8.5 13.5-1.5 7 5-2.5 5 2.5-1.5-7"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5Z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="m4 20 1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1Z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.7" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.7" fill="currentColor" stroke="none"/></symbol>
+</svg>
+
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <span class="brand-seal">陰</span>
+      <span class="sidebar__brand-name">陰山式MT連携<br>オンラインスクール</span>
+    </div>
+    <nav class="sidebar__nav" aria-label="メインナビゲーション">
+      <a href="#home" class="is-active" aria-current="page" data-view="home" data-nav="home"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span>ダッシュボード</span></a>
+      <a href="#curriculum" data-view="curriculum" data-nav="curriculum"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg><span>カリキュラム</span></a>
+      <a href="#assignments" data-view="assignments" data-nav="assignments"><svg class="ic" aria-hidden="true"><use href="#i-clip"/></svg><span>課題・提出</span></a>
+      <a href="#events" data-view="events" data-nav="events"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg><span>イベント</span></a>
+      <a href="#news" data-view="news" data-nav="news"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg><span>お知らせ</span><span class="nav-badge" id="nav-news-badge">2</span></a>
+      <a href="#certificate" data-view="certificate" data-nav="certificate"><svg class="ic" aria-hidden="true"><use href="#i-award"/></svg><span>修了証</span></a>
+      <a href="#profile" data-view="profile" data-nav="profile"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg><span>プロフィール</span></a>
+    </nav>
+    <div class="sidebar__user">
+      <span class="avatar" aria-hidden="true">佐</span>
+      <div class="sidebar__user-meta">
+        <div class="sidebar__user-name">佐藤 美咲</div>
+        <span class="user-badge">区分A|鍼灸師・資格確認済み</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main-col">
+
+    <header class="topbar">
+      <div>
+        <h1 id="page-title">おかえりなさい、佐藤さん</h1>
+        <p class="topbar__date">2026年8月16日(日)</p>
+      </div>
+      <div class="topbar__actions">
+        <button type="button" class="bell-btn" data-view="news" aria-label="通知(未読あり)"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg></button>
+        <span class="avatar" aria-hidden="true">佐</span>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- ============ ビュー: ダッシュボード ============ -->
+      <section class="view" id="view-home">
+
+      <!-- 続きから学ぶ -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <div>
+          <p class="hero__eyebrow">第10週|フェーズ2 現場で多い症状</p>
+          <h2 class="hero__title" id="hero-heading">疲れが取れない</h2>
+          <p class="hero__question">今週の問い ──「何をすると、いちばんつらいですか」</p>
+          <div class="vprog">
+            <span class="vprog__bar"><span class="vprog__fill"></span></span>
+            <span class="vprog__time">12:34 / 18:20(68%)</span>
+          </div>
+          <button type="button" class="btn-resume" data-view="lesson" data-week="10"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg>続きから再生</button>
+        </div>
+        <div class="hero__thumb" role="img" aria-label="第10週 本編動画のサムネイル(プレースホルダー)">
+          <span class="play-circle"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="hero__thumb-cap">本編動画|陰山泰成 先生(医師)</span>
+          <span class="hero__thumb-dur">18:20</span>
+        </div>
+      </section>
+
+      <div class="grid">
+        <div class="col-main">
+
+          <!-- 進捗サマリー -->
+          <section class="summary" aria-label="進捗サマリー">
+            <div class="stat">
+              <span class="stat__label">全体進捗</span>
+              <div class="ring-wrap">
+                <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+                  <circle class="ring__track" cx="60" cy="60" r="52"/>
+                  <circle class="ring__fill" cx="60" cy="60" r="52" stroke-dasharray="101.3 326.8" transform="rotate(-90 60 60)"/>
+                </svg>
+                <span class="ring-wrap__num">31<small>%</small></span>
+              </div>
+              <p class="stat__sub">9 / 30週 完了</p>
+            </div>
+            <div class="stat">
+              <span class="stat__label">次回解放</span>
+              <p class="stat__big">第11週「眠れない」<small>2026年8月19日(水)</small></p>
+              <span class="pill">あと3日</span>
+            </div>
+            <div class="stat">
+              <span class="stat__label">学習ペース</span>
+              <p class="stat__num">42<small>分</small></p>
+              <p class="stat__sub" style="text-align:left">今週の学習時間|動画2本・確認テスト1回</p>
+            </div>
+          </section>
+
+          <!-- やること -->
+          <section class="card" aria-labelledby="tasks-heading">
+            <div class="card__head">
+              <h2 class="card__title" id="tasks-heading">やること</h2>
+              <a class="card__link" href="#assignments" data-view="assignments">課題・提出へ</a>
+            </div>
+            <div class="tasks">
+              <a class="task" href="#lesson" data-view="lesson" data-week="10">
+                <span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-clip"/></svg></span>
+                <span class="task__name">第10週 確認テスト<small>全10問・目安5分</small></span>
+                <span class="badge badge--warn">未受験</span>
+                <svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+              <a class="task" href="#assignments" data-view="assignments">
+                <span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-pen"/></svg></span>
+                <span class="task__name">第10週 セルフケア設計シート<small>目的・方法・中止基準まで6項目</small></span>
+                <span class="badge badge--draft">下書き</span>
+                <svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+              <a class="task" href="#lesson" data-view="lesson" data-week="9">
+                <span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></span>
+                <span class="task__name">第9週 資格別パートA版<small>国家資格者向け・約5分</small></span>
+                <span class="badge badge--todo">未視聴</span>
+                <svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </section>
+
+          <!-- 30週ロードマップ -->
+          <section class="card" aria-labelledby="roadmap-heading">
+            <div class="card__head">
+              <h2 class="card__title" id="roadmap-heading">30週の学習の道のり</h2>
+              <span class="roadmap-note">7日ごとに次の週が解放されます</span>
+            </div>
+            <div class="legend">
+              <span><i class="l-done"></i>完了</span>
+              <span><i class="l-now"></i>いまここ</span>
+              <span><i class="l-lock"></i>未解放</span>
+            </div>
+
+            <section class="phase phase--1" aria-label="フェーズ1 見立てと安全判断の土台">
+              <header class="phase__head">
+                <span class="phase__chip">フェーズ1</span>
+                <h3 class="phase__name">見立てと安全判断の土台</h3>
+                <span class="phase__range">W1–7</span>
+                <span class="phase__count">7/7週 完了</span>
+              </header>
+              <ol class="phase__weeks">
+                <li><a class="week week--done" href="#"><span class="week__node">1</span><span class="week__title">スクールの目的と、医療連携セラピストとは</span></a></li>
+                <li><a class="week week--done" href="#"><span class="week__node">2</span><span class="week__title">陰山式・判断モデル</span></a></li>
+                <li><a class="week week--done" href="#"><span class="week__node">3</span><span class="week__title">症状・病名・原因・病態の違い</span></a></li>
+                <li><a class="week week--done" href="#"><span class="week__node">4</span><span class="week__title">時間軸と問診</span></a></li>
+                <li><a class="week week--done" href="#"><span class="week__node">5</span><span class="week__title">レッドフラッグと緊急度</span></a></li>
+                <li><a class="week week--done" href="#"><span class="week__node">6</span><span class="week__title">既往歴・服薬・手術と施術リスク</span></a></li>
+                <li><a class="week week--done" href="#"><span class="week__node">7</span><span class="week__title">セルフケアの役割と限界</span></a></li>
+              </ol>
+            </section>
+
+            <section class="phase phase--2" aria-label="フェーズ2 現場で多い症状">
+              <header class="phase__head">
+                <span class="phase__chip">フェーズ2</span>
+                <h3 class="phase__name">現場で多い症状</h3>
+                <span class="phase__range">W8–23</span>
+                <span class="phase__count">2/16週 完了</span>
+              </header>
+              <ol class="phase__weeks">
+                <li><a class="week week--done" href="#"><span class="week__node">8</span><span class="week__title">首肩がこる</span></a></li>
+                <li><a class="week week--done" href="#"><span class="week__node">9</span><span class="week__title">腰が痛い</span></a></li>
+                <li><a class="week week--current" href="#" aria-current="step"><span class="week__node">10</span><span class="week__title">疲れが取れない</span><span class="now-label">いまここ</span></a></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">11 眠れない</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">12 気分が落ちる</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">13 頭が痛い</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">14 めまいがする</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">15 動悸・息切れがする</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">16 しびれる・力が入らない【最重要】</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">17 手指が痛い・こわばる</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">18 お腹の調子が悪い</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">19 冷える・むくむ</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">20 太った・痩せた・大きくならない</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">21 月経・更年期の不調</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">22 妊活・男性の悩み</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">23 肌・毛髪の悩み</span></div></li>
+              </ol>
+            </section>
+
+            <section class="phase phase--3" aria-label="フェーズ3 疾患と医療連携">
+              <header class="phase__head">
+                <span class="phase__chip">フェーズ3</span>
+                <h3 class="phase__name">疾患と医療連携</h3>
+                <span class="phase__range">W24–28</span>
+                <span class="phase__count">0/5週 完了</span>
+              </header>
+              <ol class="phase__weeks">
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">24 認知機能・うつ・発達特性</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">25 脳卒中・パーキンソン病</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">26 多発性硬化症・ALS・自己免疫疾患</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">27 がん治療中・免疫抑制中の方</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">28 幹細胞・エクソソーム・先端医療【先生の専門】</span></div></li>
+              </ol>
+            </section>
+
+            <section class="phase phase--4" aria-label="フェーズ4 統合実践">
+              <header class="phase__head">
+                <span class="phase__chip">フェーズ4</span>
+                <h3 class="phase__name">統合実践</h3>
+                <span class="phase__range">W29–30</span>
+                <span class="phase__count">0/2週 完了</span>
+              </header>
+              <ol class="phase__weeks">
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">29 総合症例カンファレンス</span></div></li>
+                <li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">30 最終実践・患者説明・医療連携</span></div></li>
+              </ol>
+            </section>
+          </section>
+
+        </div><!-- /.col-main -->
+
+        <aside class="col-side">
+
+          <!-- 直近イベント -->
+          <section class="card" aria-labelledby="events-heading">
+            <div class="card__head">
+              <h2 class="card__title" id="events-heading">直近イベント</h2>
+              <a class="card__link" href="#events" data-view="events">すべて見る</a>
+            </div>
+            <div class="event">
+              <div class="event__date" aria-hidden="true"><span>8月</span><b>28</b><span>(金)</span></div>
+              <div class="event__body">
+                <p class="event__name">症例カンファレンス Vol.3「しびれの9つの入口」</p>
+                <p class="event__meta">2026年8月28日(金)20:00・オンライン</p>
+                <span class="badge badge--ok">申込済み</span>
+              </div>
+            </div>
+            <div class="event">
+              <div class="event__date" aria-hidden="true"><span>9月</span><b>4</b><span>(金)</span></div>
+              <div class="event__body">
+                <p class="event__name">月例ライブQ&amp;A</p>
+                <p class="event__meta">2026年9月4日(金)20:00・オンライン</p>
+                <button type="button" class="btn-sm" data-action="register">申し込む</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- お知らせ -->
+          <section class="card" aria-labelledby="news-heading">
+            <div class="card__head">
+              <h2 class="card__title" id="news-heading">お知らせ</h2>
+              <a class="card__link" href="#news" data-view="news">一覧へ</a>
+            </div>
+            <a class="notice notice--unread" href="#">
+              <p class="notice__title">第10週の補助教材を更新しました</p>
+              <p class="notice__date">2026年8月14日・未読</p>
+            </a>
+            <a class="notice" href="#">
+              <p class="notice__title">9月の懇親会・症例相談会(東京)受付開始</p>
+              <p class="notice__date">2026年8月12日</p>
+            </a>
+          </section>
+
+          <!-- 資格確認ステータス -->
+          <section class="qual" aria-label="資格確認ステータス">
+            <span class="qual__ic"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span>
+            <div>
+              <p class="qual__title">区分A|国家資格確認済み</p>
+              <p class="qual__sub">鍼灸師としての資格確認が完了しています。</p>
+              <a class="qual__link" href="#curriculum" data-view="curriculum">資格者限定シリーズを視聴できます<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </section>
+
+          <!-- 修了への道 -->
+          <section class="card" aria-labelledby="comp-heading">
+            <div class="comp__head">
+              <svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>
+              <h2 class="card__title" id="comp-heading">修了への道</h2>
+            </div>
+            <div class="comp-row">
+              <div class="comp-row__top"><b>必須レッスン</b><span class="comp-row__num">9 / 30</span></div>
+              <div class="comp-bar"><i style="width:30%"></i></div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-row__top"><b>確認テスト合格</b><span class="comp-row__num">8 / 9</span></div>
+              <div class="comp-bar"><i style="width:89%"></i></div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-row__top"><b>課題承認</b><span class="comp-row__num">7 / 9</span></div>
+              <div class="comp-bar"><i style="width:78%"></i></div>
+            </div>
+            <p class="comp__foot">修了証は修了条件の達成と運営の承認により発行されます(国家資格や医療資格に相当する認定ではありません)。</p>
+            <a class="comp__link" href="#certificate" data-view="certificate">修了判定の条件<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </section>
+
+        </aside><!-- /.col-side -->
+      </div><!-- /.grid -->
+
+      </section><!-- /view-home -->
+
+      <!-- ============ ビュー: レッスン ============ -->
+      <section class="view" id="view-lesson" hidden>
+        <p class="crumb"><a href="#curriculum" data-view="curriculum">カリキュラム</a> / <span id="lesson-crumb">第10週</span></p>
+        <p class="lesson-note" id="lesson-note" hidden>※モックのため、レッスン内容は第10週のサンプルを表示しています。</p>
+        <header class="lesson-head">
+          <p class="hero__eyebrow" id="lesson-eyebrow" style="color:var(--teal-600)">第10週|フェーズ2 現場で多い症状</p>
+          <h2 class="lesson-title" id="lesson-title">疲れが取れない</h2>
+        </header>
+
+        <section class="card" aria-label="本編動画">
+          <div class="player" role="img" aria-label="本編動画プレーヤー(モック)">
+            <span class="play-circle"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></span>
+            <span class="player__cap">本編動画|陰山泰成 先生(医師)</span>
+            <span class="player__dur">12:34 / 18:20</span>
+            <span class="player__bar" aria-hidden="true"><i></i></span>
+          </div>
+          <div class="chapters" aria-label="チャプター">
+            <button type="button" class="chapter">オープニング</button>
+            <button type="button" class="chapter">今回のプログラム</button>
+            <button type="button" class="chapter is-on">本編</button>
+            <button type="button" class="chapter">陰山先生なら、ここを見る</button>
+            <button type="button" class="chapter">まとめ・ホームワーク</button>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="keypoints-heading">
+          <div class="card__head"><h2 class="card__title" id="keypoints-heading">今週の要点</h2></div>
+          <ul class="keypoints">
+            <li>「疲れが取れない」は、いくつもの扉に共通するひとつの入口。原因候補を並べてから考える。</li>
+            <li>先に確認するのは危険なサイン(意図しない体重減少・続く微熱・労作後の悪化 など)。</li>
+            <li>セルフケアは「目的・量・中止基準」を決めて渡す。いきなり運動は勧めない。</li>
+          </ul>
+        </section>
+
+        <section class="card" aria-labelledby="kv-heading">
+          <div class="card__head">
+            <h2 class="card__title" id="kv-heading">「陰山先生なら、ここを見る」</h2>
+            <span class="roadmap-note">毎週の固定コーナー|症例はすべて創作です</span>
+          </div>
+          <p class="kv-quote">「何をすると、いちばんつらいですか」</p>
+          <div class="kv-row"><span class="kv-num">❶</span><div><p class="kv-q">最初に何を聞くか</p><p class="kv-a">上の一問から。疲労の「質」が、原因候補の並べ方を決めます。</p></div></div>
+          <div class="kv-row"><span class="kv-num">❷</span><div><p class="kv-q">どの情報で判断が変わるか</p><p class="kv-a">半年で意図せず体重が5%以上減っていたら、判断が変わります。</p></div></div>
+          <div class="kv-row"><span class="kv-num">❸</span><div><p class="kv-q">何を行い、何を行わないか</p><p class="kv-a">やる=睡眠の質を整える設計/やらない=いきなり運動を勧める。</p></div></div>
+          <div class="kv-row"><span class="kv-num">❹</span><div><p class="kv-q">次の一手は何か</p><p class="kv-a">疲労だけなら2週間セルフケア。レッドフラッグが1つでもあれば、当日受診。</p></div></div>
+        </section>
+
+        <section class="card" aria-labelledby="abpart-heading">
+          <div class="card__head">
+            <h2 class="card__title" id="abpart-heading">資格別パート|A版(国家資格者向け)</h2>
+            <span class="badge badge--ok">視聴できます</span>
+          </div>
+          <p style="font-size:14px;color:var(--slate);line-height:1.8">「あなたの資格では、ここまで」。この症状での施術範囲と刺激量、禁忌、医師への照会が必要な場面と伝え方を約5分で確認します。</p>
+          <div class="form-actions"><button type="button" class="btn-primary" data-toast="A版パートの再生はモックのため省略しています"><svg class="ic" aria-hidden="true" style="width:15px;height:15px"><use href="#i-play"/></svg>A版を視聴する</button></div>
+        </section>
+
+        <section class="card" aria-labelledby="dl-heading">
+          <div class="card__head"><h2 class="card__title" id="dl-heading">補助教材</h2></div>
+          <div class="dl">
+            <span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-clip"/></svg></span>
+            <span class="dl__name">問診チェックシート(第10週版)<small>PDF・約420KB</small></span>
+            <button type="button" class="btn-ghost" data-toast="ダウンロードはモックのため省略しています">ダウンロード</button>
+          </div>
+          <div class="dl">
+            <span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-clip"/></svg></span>
+            <span class="dl__name">レッドフラッグ一覧(疲労編)<small>PDF・約380KB</small></span>
+            <button type="button" class="btn-ghost" data-toast="ダウンロードはモックのため省略しています">ダウンロード</button>
+          </div>
+          <div class="dl">
+            <span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-pen"/></svg></span>
+            <span class="dl__name">セルフケア設計シート(記入用)<small>PDF・約300KB</small></span>
+            <button type="button" class="btn-ghost" data-toast="ダウンロードはモックのため省略しています">ダウンロード</button>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="quiz-heading">
+          <div class="card__head">
+            <h2 class="card__title" id="quiz-heading">確認テスト(サンプル1問)</h2>
+            <span class="badge badge--warn">未受験</span>
+          </div>
+          <p class="quiz-q">Q. 「疲れが取れない」と話すお客様で、当日の医療機関受診を後押しすべきサインはどれですか?</p>
+          <label class="quiz-opt"><input type="radio" name="quiz1"><span>眠りが浅い日が続いている</span></label>
+          <label class="quiz-opt"><input type="radio" name="quiz1" data-ok="1"><span>半年で意図せず体重が5%以上減っている</span></label>
+          <label class="quiz-opt"><input type="radio" name="quiz1"><span>夕方に疲れがピークになる</span></label>
+          <div class="form-actions"><button type="button" class="btn-primary" id="quiz-submit">解答する</button></div>
+          <p class="quiz-fb" id="quiz-fb" hidden></p>
+        </section>
+
+        <section class="card" aria-labelledby="sheet-heading">
+          <div class="card__head">
+            <h2 class="card__title" id="sheet-heading">今週の課題|セルフケア設計シート</h2>
+            <span class="badge badge--draft">下書き</span>
+          </div>
+          <p style="font-size:14px;color:var(--slate);line-height:1.8">目的・方法・頻度・量・実施してよい条件・中止基準・評価方法の6項目で、お客様に渡すセルフケアを設計します。</p>
+          <div class="form-actions"><a class="btn-primary" href="#assignments" data-view="assignments">シートを開く</a></div>
+        </section>
+
+        <nav class="weeknav" aria-label="前後の週">
+          <a class="btn-ghost" href="#lesson" data-view="lesson" data-week="9">← 第9週 腰が痛い</a>
+          <span class="weeknav__locked"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>第11週 眠れない|8月19日(水)解放</span>
+        </nav>
+      </section>
+
+      <!-- ============ ビュー: カリキュラム ============ -->
+      <section class="view" id="view-curriculum" hidden>
+        <section class="card" aria-labelledby="cur-heading">
+          <div class="card__head">
+            <h2 class="card__title" id="cur-heading">全30週カリキュラム</h2>
+            <span class="roadmap-note">入会日起点・7日ごとに解放|現在 第10週</span>
+          </div>
+          <div class="legend">
+            <span><i class="l-done"></i>完了</span>
+            <span><i class="l-now"></i>いまここ</span>
+            <span><i class="l-lock"></i>未解放</span>
+          </div>
+          <div id="cur-list"></div>
+        </section>
+
+        <section class="card" aria-labelledby="pro-heading">
+          <div class="card__head">
+            <h2 class="card__title" id="pro-heading">資格者限定シリーズ(6本)</h2>
+            <span class="badge badge--ok">区分A|視聴できます</span>
+          </div>
+          <p style="font-size:13px;color:var(--slate);margin-bottom:8px">国家資格の確認が済んだ方だけに表示される、実務のミニシリーズです。</p>
+          <div class="tasks">
+            <a class="task" href="#" data-toast="資格者限定シリーズの再生はモックのため省略しています"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span><span class="task__name">P1 業務範囲の法令を正しく理解する</span><span class="badge badge--ok">視聴済み</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="task" href="#" data-toast="資格者限定シリーズの再生はモックのため省略しています"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span><span class="task__name">P2 医師の同意書と療養費</span><span class="badge badge--ok">視聴済み</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="task" href="#" data-toast="資格者限定シリーズの再生はモックのため省略しています"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span><span class="task__name">P3 施術録の書き方</span><span class="badge badge--todo">未視聴</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="task" href="#" data-toast="資格者限定シリーズの再生はモックのため省略しています"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span><span class="task__name">P4 医師への照会と、情報提供の作法</span><span class="badge badge--todo">未視聴</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="task" href="#" data-toast="資格者限定シリーズの再生はモックのため省略しています"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span><span class="task__name">P5 柔整領域の判断</span><span class="badge badge--todo">未視聴</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="task" href="#" data-toast="資格者限定シリーズの再生はモックのため省略しています"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span><span class="task__name">P6 他職種との連携実務</span><span class="badge badge--todo">未視聴</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </section>
+      </section>
+
+      <!-- ============ ビュー: 課題・提出 ============ -->
+      <section class="view" id="view-assignments" hidden>
+        <div class="as-sum" aria-label="課題の状況">
+          <span class="as-chip"><b>7</b>承認済み</span>
+          <span class="as-chip"><b>1</b>評価待ち</span>
+          <span class="as-chip"><b>1</b>下書き</span>
+          <span class="as-chip"><b>8/9</b>確認テスト合格</span>
+        </div>
+
+        <section class="card" aria-labelledby="sheets-heading">
+          <div class="card__head"><h2 class="card__title" id="sheets-heading">セルフケア設計シート(週課題)</h2></div>
+          <div class="tasks">
+            <a class="task" href="#sheet-form"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-pen"/></svg></span><span class="task__name">第10週 疲れが取れない<small>下書きを保存済み・提出期限なし</small></span><span class="badge badge--draft">下書き</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="task" href="#" data-toast="提出内容の閲覧はモックのため省略しています"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-pen"/></svg></span><span class="task__name">第9週 腰が痛い<small>8月15日 提出</small></span><span class="badge badge--warn">評価待ち</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="task" href="#" data-toast="講師コメントの閲覧はモックのため省略しています"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-pen"/></svg></span><span class="task__name">第8週 首肩がこる<small>講師コメントあり</small></span><span class="badge badge--ok">承認済み</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="task" href="#" data-toast="提出内容の閲覧はモックのため省略しています"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-pen"/></svg></span><span class="task__name">第7週 セルフケアの役割と限界</span><span class="badge badge--ok">承認済み</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+          <a class="card__link" href="#" data-toast="第1〜6週の課題一覧はモックのため省略しています" style="display:inline-block;margin-top:10px">第1〜6週の課題を表示</a>
+        </section>
+
+        <section class="card" id="sheet-form" aria-labelledby="form-heading">
+          <div class="card__head">
+            <h2 class="card__title" id="form-heading">第10週 セルフケア設計シート</h2>
+            <span class="badge badge--draft">下書き</span>
+          </div>
+          <div class="form-grid">
+            <div class="field"><label for="f-goal">目的</label><input id="f-goal" type="text" value="睡眠の質を上げ、回復の土台をつくる"></div>
+            <div class="field"><label for="f-freq">頻度・量</label><input id="f-freq" type="text" value="毎日。1つずつ、1週間ごとに追加する"></div>
+            <div class="field field--wide"><label for="f-method">方法</label><textarea id="f-method">就寝90分前の入浴。起床後に朝の光を浴びる。就寝前の3呼吸。</textarea></div>
+            <div class="field"><label for="f-cond">実施してよい条件</label><input id="f-cond" type="text" value="レッドフラッグがないこと"></div>
+            <div class="field"><label for="f-stop">中止基準</label><input id="f-stop" type="text" value="疲労の悪化、動悸が出たとき"></div>
+            <div class="field field--wide"><label for="f-eval">評価方法</label><input id="f-eval" type="text" value="起床時の回復感を10段階で記録する"></div>
+          </div>
+          <p class="form-caution">実在のお客様・患者さんの氏名、住所、連絡先などの個人情報は入力しないでください。</p>
+          <div class="form-actions">
+            <button type="button" class="btn-ghost" data-toast="下書きを保存しました(モック)">下書き保存</button>
+            <button type="button" class="btn-primary" data-toast="提出しました(モック)※実際には送信されません">提出する</button>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="quizlist-heading">
+          <div class="card__head"><h2 class="card__title" id="quizlist-heading">確認テストの状況</h2></div>
+          <div class="tasks">
+            <a class="task" href="#lesson" data-view="lesson" data-week="10"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-clip"/></svg></span><span class="task__name">第10週 確認テスト<small>全10問・目安5分</small></span><span class="badge badge--warn">未受験</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="task" href="#" data-toast="受験履歴の閲覧はモックのため省略しています"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-clip"/></svg></span><span class="task__name">第9週 確認テスト<small>8月13日 受験</small></span><span class="badge badge--ok">合格・92点</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="task" href="#" data-toast="受験履歴の閲覧はモックのため省略しています"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-clip"/></svg></span><span class="task__name">第8週 確認テスト<small>8月6日 受験</small></span><span class="badge badge--ok">合格・100点</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+          <a class="card__link" href="#" data-toast="第1〜7週のテスト履歴はモックのため省略しています" style="display:inline-block;margin-top:10px">それ以前の履歴を表示</a>
+        </section>
+      </section>
+
+      <!-- ============ ビュー: イベント ============ -->
+      <section class="view" id="view-events" hidden>
+        <section class="card" aria-labelledby="ev1-heading">
+          <div class="event" style="padding-top:0">
+            <div class="event__date" aria-hidden="true"><span>8月</span><b>28</b><span>(金)</span></div>
+            <div class="event__body">
+              <p class="event__name" id="ev1-heading">症例カンファレンス Vol.3「しびれの9つの入口」</p>
+              <p class="event__meta">2026年8月28日(金)20:00〜21:30・オンライン(Zoom)</p>
+              <p class="event__meta" style="margin-top:6px">情報を小出しにしながら、判断がどう変わるかを一緒に体験する回です。参加URLは開催前日にお知らせでご案内します。</p>
+              <span class="badge badge--ok">申込済み</span>
+              <div class="form-actions" style="margin-top:10px">
+                <button type="button" class="btn-ghost" data-toast="カレンダー追加(ICS)はモックのため省略しています">カレンダーに追加</button>
+                <button type="button" class="btn-ghost" data-toast="キャンセルはモックのため省略しています">キャンセル</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="ev2-heading">
+          <div class="event" style="padding-top:0">
+            <div class="event__date" aria-hidden="true"><span>9月</span><b>4</b><span>(金)</span></div>
+            <div class="event__body">
+              <p class="event__name" id="ev2-heading">月例ライブQ&amp;A</p>
+              <p class="event__meta">2026年9月4日(金)20:00〜21:00・オンライン(Zoom)</p>
+              <p class="event__meta" style="margin-top:6px">陰山先生に直接質問できる月1回のライブ。事前質問を優先して取り上げます。</p>
+              <div class="form-actions" style="margin-top:10px">
+                <button type="button" class="btn-primary" data-action="register">申し込む</button>
+                <button type="button" class="btn-ghost" data-toast="事前質問フォームはモックのため省略しています">事前質問を送る</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="ev3-heading">
+          <div class="event" style="padding-top:0">
+            <div class="event__date" aria-hidden="true"><span>9月</span><b>20</b><span>(日)</span></div>
+            <div class="event__body">
+              <p class="event__name" id="ev3-heading">懇親会・症例相談会(東京)</p>
+              <p class="event__meta">2026年9月20日(日)14:00〜17:00・都内会議室(会場詳細は申込者にご案内)</p>
+              <p class="event__meta" style="margin-top:6px">定員24名(残り8席)・現地開催。受講生同士の症例相談と交流会です。</p>
+              <div class="form-actions" style="margin-top:10px">
+                <button type="button" class="btn-primary" data-action="register">申し込む</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="evarc-heading">
+          <div class="card__head"><h2 class="card__title" id="evarc-heading">過去のイベント(アーカイブ)</h2></div>
+          <div class="tasks">
+            <a class="task" href="#" data-toast="アーカイブ再生はモックのため省略しています"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></span><span class="task__name">症例カンファレンス Vol.2「腰痛、施術していいとき・いけないとき」<small>2026年7月24日 開催・録画 62分</small></span><span class="badge badge--todo">未視聴</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="task" href="#" data-toast="アーカイブ再生はモックのため省略しています"><span class="task__ic"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></span><span class="task__name">月例ライブQ&amp;A(8月回)<small>2026年8月7日 開催・録画 58分</small></span><span class="badge badge--ok">視聴済み</span><svg class="ic task__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </section>
+      </section>
+
+      <!-- ============ ビュー: お知らせ ============ -->
+      <section class="view" id="view-news" hidden>
+        <section class="card" aria-labelledby="newslist-heading">
+          <div class="card__head">
+            <h2 class="card__title" id="newslist-heading">お知らせ</h2>
+            <span class="roadmap-note">クリックで既読になります</span>
+          </div>
+          <a class="notice notice--unread" href="#">
+            <p class="notice__title">第10週の補助教材を更新しました</p>
+            <p class="notice__date">2026年8月14日</p>
+            <p class="notice__body">問診チェックシート(第10週版)を差し替えました。すでにダウンロード済みの方は、お手数ですが最新版をご利用ください。</p>
+          </a>
+          <a class="notice notice--unread" href="#">
+            <p class="notice__title">9月4日 月例ライブQ&amp;Aの事前質問受付を開始しました</p>
+            <p class="notice__date">2026年8月13日</p>
+            <p class="notice__body">イベントページの「事前質問を送る」からお寄せください。締切は9月2日(水)です。</p>
+          </a>
+          <a class="notice" href="#">
+            <p class="notice__title">9月の懇親会・症例相談会(東京)受付開始</p>
+            <p class="notice__date">2026年8月12日</p>
+            <p class="notice__body">定員24名・先着順です。会場の詳細は申込者の方にご案内します。</p>
+          </a>
+          <a class="notice" href="#">
+            <p class="notice__title">第9週の課題フィードバックをお返ししました</p>
+            <p class="notice__date">2026年8月9日</p>
+            <p class="notice__body">課題・提出ページからご確認ください。</p>
+          </a>
+          <a class="notice" href="#">
+            <p class="notice__title">システムメンテナンスのお知らせ</p>
+            <p class="notice__date">2026年8月5日</p>
+            <p class="notice__body">8月20日(木)2:00〜4:00の間、一時的にご利用いただけません。ご了承ください。</p>
+          </a>
+        </section>
+      </section>
+
+      <!-- ============ ビュー: 修了証 ============ -->
+      <section class="view" id="view-certificate" hidden>
+        <section class="card" aria-labelledby="certcond-heading">
+          <div class="card__head"><h2 class="card__title" id="certcond-heading">修了判定の条件</h2></div>
+          <div class="comp-row">
+            <div class="comp-row__top"><b>必須レッスン完了</b><span class="comp-row__num">9 / 30</span></div>
+            <div class="comp-bar"><i style="width:30%"></i></div>
+          </div>
+          <div class="comp-row">
+            <div class="comp-row__top"><b>確認テスト合格</b><span class="comp-row__num">8 / 9</span></div>
+            <div class="comp-bar"><i style="width:89%"></i></div>
+          </div>
+          <div class="comp-row">
+            <div class="comp-row__top"><b>課題(セルフケア設計シート)承認</b><span class="comp-row__num">7 / 9</span></div>
+            <div class="comp-bar"><i style="width:78%"></i></div>
+          </div>
+          <div class="comp-row">
+            <div class="comp-row__top"><b>最終課題(30週分のシートを1冊に)</b><span class="comp-row__num">0 / 1</span></div>
+            <div class="comp-bar"><i style="width:0%"></i></div>
+          </div>
+          <p class="comp__foot">すべての条件を達成すると自動で判定され、運営の承認ののち修了証が発行されます。</p>
+        </section>
+
+        <section class="card" aria-label="修了証プレビュー">
+          <div class="cert-frame is-locked">
+            <p class="eyebrow">陰山式MT連携オンラインスクール</p>
+            <h3>修了証</h3>
+            <p>お名前が入ります<br>全30週の修了条件を達成し、運営の承認を得たことを証します(サンプル)</p>
+          </div>
+          <p class="cert-lock-msg"><svg class="ic" aria-hidden="true" style="width:14px;height:14px;vertical-align:-2px"><use href="#i-lock"/></svg> 全30週の修了条件を達成すると、ここに修了証が発行されます。</p>
+          <p class="comp__foot" style="text-align:center">修了証は、国家資格または医療資格に相当する認定ではありません。</p>
+        </section>
+      </section>
+
+      <!-- ============ ビュー: プロフィール ============ -->
+      <section class="view" id="view-profile" hidden>
+        <section class="card" aria-labelledby="prof-heading">
+          <div class="card__head"><h2 class="card__title" id="prof-heading">プロフィール</h2></div>
+          <dl>
+            <div class="prow"><dt>氏名</dt><dd>佐藤 美咲(さとう みさき)</dd></div>
+            <div class="prow"><dt>メールアドレス</dt><dd>m.sato@example.com(仮)</dd></div>
+            <div class="prow"><dt>受講開始日</dt><dd>2026年6月14日(日)</dd></div>
+            <div class="prow"><dt>受講プラン</dt><dd>一括プラン</dd></div>
+          </dl>
+          <div class="form-actions"><button type="button" class="btn-ghost" data-toast="プロフィール編集はモックのため省略しています">編集する</button></div>
+        </section>
+
+        <section class="card" aria-labelledby="qualinfo-heading">
+          <div class="card__head">
+            <h2 class="card__title" id="qualinfo-heading">資格情報</h2>
+            <span class="badge badge--ok">区分A|確認済み</span>
+          </div>
+          <dl>
+            <div class="prow"><dt>資格区分</dt><dd>区分A(国家資格者)</dd></div>
+            <div class="prow"><dt>資格種別</dt><dd>はり師・きゅう師</dd></div>
+            <div class="prow"><dt>登録番号</dt><dd>●●●●●●(非公開)</dd></div>
+            <div class="prow"><dt>確認完了日</dt><dd>2026年6月18日(木)</dd></div>
+          </dl>
+          <p class="comp__foot">資格確認済みのため、各週のA版パートと資格者限定シリーズを視聴できます。</p>
+        </section>
+
+        <section class="card" aria-labelledby="notif-heading">
+          <div class="card__head"><h2 class="card__title" id="notif-heading">通知設定</h2></div>
+          <div class="prow"><dt>週の解放通知(メール)</dt><dd><button type="button" class="switch" role="switch" aria-checked="true" aria-label="週の解放通知(メール)"></button></dd></div>
+          <div class="prow"><dt>イベント前日リマインド</dt><dd><button type="button" class="switch" role="switch" aria-checked="true" aria-label="イベント前日リマインド"></button></dd></div>
+          <div class="prow"><dt>お知らせメール</dt><dd><button type="button" class="switch" role="switch" aria-checked="false" aria-label="お知らせメール"></button></dd></div>
+        </section>
+
+        <section class="card" aria-labelledby="account-heading">
+          <div class="card__head"><h2 class="card__title" id="account-heading">アカウント</h2></div>
+          <div class="form-actions" style="margin-top:0;align-items:center">
+            <button type="button" class="btn-ghost" data-toast="パスワード変更はモックのため省略しています">パスワードを変更</button>
+            <a class="link-danger" href="#" data-toast="退会申請はモックのため操作できません">退会を申請する</a>
+          </div>
+        </section>
+      </section>
+
+      <p class="mock-note">※表示内容(氏名・進捗・日程・数値など)はすべて仮のサンプルです。</p>
+
+    </main>
+  </div>
+</div>
+
+<!-- モバイル下部ナビ -->
+<nav class="bottom-nav" aria-label="モバイルナビゲーション">
+  <a href="#home" class="is-active" aria-current="page" data-view="home" data-nav="home"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span>ホーム</span></a>
+  <a href="#curriculum" data-view="curriculum" data-nav="curriculum"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg><span>カリキュラム</span></a>
+  <a href="#assignments" data-view="assignments" data-nav="assignments"><svg class="ic" aria-hidden="true"><use href="#i-clip"/></svg><span>課題</span></a>
+  <a href="#profile" data-view="profile" data-nav="profile"><svg class="ic" aria-hidden="true"><use href="#i-dots"/></svg><span>その他</span></a>
+</nav>
+
+<!-- モック切替ナビ -->
+<nav class="mock-nav" aria-label="モック切替">
+  <span class="mock-nav__label">デザインモック</span>
+  <a href="https://prorium1.github.io/mt-school-mock/lp.html">LP</a>
+  <a href="https://prorium1.github.io/mt-school-mock/student-dashboard.html" aria-current="page">受講生画面</a>
+  <a href="https://prorium1.github.io/mt-school-mock/admin.html">運営管理画面</a>
+</nav>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---- data ---- */
+  var WEEKS=['スクールの目的と、医療連携セラピストとは','陰山式・判断モデル','症状・病名・原因・病態の違い','時間軸と問診','レッドフラッグと緊急度','既往歴・服薬・手術と施術リスク','セルフケアの役割と限界','首肩がこる','腰が痛い','疲れが取れない','眠れない','気分が落ちる','頭が痛い','めまいがする','動悸・息切れがする','しびれる・力が入らない【最重要】','手指が痛い・こわばる','お腹の調子が悪い','冷える・むくむ','太った・痩せた・大きくならない','月経・更年期の不調','妊活・男性の悩み','肌・毛髪の悩み','認知機能・うつ・発達特性','脳卒中・パーキンソン病','多発性硬化症・ALS・自己免疫疾患','がん治療中・免疫抑制中の方','幹細胞・エクソソーム・先端医療【先生の専門】','総合症例カンファレンス','最終実践・患者説明・医療連携'];
+  var PHASES=[[1,7,'見立てと安全判断の土台'],[8,23,'現場で多い症状'],[24,28,'疾患と医療連携'],[29,30,'統合実践']];
+  var CURRENT=10;
+  var VIEWS=['home','curriculum','assignments','events','news','certificate','profile','lesson'];
+  var TITLES={home:'おかえりなさい、佐藤さん',curriculum:'カリキュラム',assignments:'課題・提出',events:'イベント',news:'お知らせ',certificate:'修了証',profile:'プロフィール',lesson:'レッスン'};
+
+  /* ---- toast ---- */
+  var toastEl=document.createElement('div');
+  toastEl.className='toast';toastEl.setAttribute('role','status');
+  document.body.appendChild(toastEl);
+  var toastTimer=null;
+  function toast(msg){
+    toastEl.textContent=msg;toastEl.classList.add('on');
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(function(){toastEl.classList.remove('on');},2400);
+  }
+
+  /* ---- view switching ---- */
+  var pageTitle=document.getElementById('page-title');
+  function show(name,keepHash){
+    if(VIEWS.indexOf(name)<0)name='home';
+    VIEWS.forEach(function(v){
+      var el=document.getElementById('view-'+v);
+      if(el)el.hidden=(v!==name);
+    });
+    document.querySelectorAll('[data-nav]').forEach(function(a){
+      var on=a.getAttribute('data-nav')===name||(name==='lesson'&&a.getAttribute('data-nav')==='curriculum');
+      a.classList.toggle('is-active',on);
+      if(on){a.setAttribute('aria-current','page');}else{a.removeAttribute('aria-current');}
+    });
+    if(pageTitle)pageTitle.textContent=TITLES[name];
+    if(!keepHash&&history.replaceState)history.replaceState(null,'','#'+name);
+    window.scrollTo(0,0);
+  }
+
+  function phaseOf(n){
+    for(var i=0;i<PHASES.length;i++){if(n>=PHASES[i][0]&&n<=PHASES[i][1])return['フェーズ'+(i+1),PHASES[i][2]];}
+    return['',''];
+  }
+  function openLesson(n){
+    n=Math.min(Math.max(n||CURRENT,1),CURRENT);
+    var p=phaseOf(n);
+    document.getElementById('lesson-eyebrow').textContent='第'+n+'週|'+p[0]+' '+p[1];
+    document.getElementById('lesson-title').textContent=WEEKS[n-1];
+    document.getElementById('lesson-crumb').textContent='第'+n+'週';
+    document.getElementById('lesson-note').hidden=(n===CURRENT);
+    show('lesson');
+  }
+
+  /* ---- curriculum list ---- */
+  function unlockLabel(n){
+    var d=new Date(2026,7,19+(n-CURRENT-1)*7);
+    return (d.getMonth()+1)+'月'+d.getDate()+'日 解放';
+  }
+  function renderCurriculum(){
+    var host=document.getElementById('cur-list');
+    if(!host)return;
+    var html='';
+    PHASES.forEach(function(ph,i){
+      var start=ph[0],end=ph[1],name=ph[2];
+      var done=Math.max(0,Math.min(end,CURRENT-1)-start+1);
+      html+='<section class="phase phase--'+(i+1)+'" aria-label="フェーズ'+(i+1)+' '+name+'">'
+        +'<header class="phase__head"><span class="phase__chip">フェーズ'+(i+1)+'</span>'
+        +'<h3 class="phase__name">'+name+'</h3>'
+        +'<span class="phase__range">W'+start+'–'+end+'</span>'
+        +'<span class="phase__count">'+done+'/'+(end-start+1)+'週 完了</span></header>'
+        +'<ol class="phase__weeks">';
+      for(var n=start;n<=end;n++){
+        var t=WEEKS[n-1];
+        if(n<CURRENT){
+          html+='<li><a class="week week--done" href="#lesson"><span class="week__node">'+n+'</span><span class="week__title">'+t+'</span><span class="week__meta">完了</span></a></li>';
+        }else if(n===CURRENT){
+          html+='<li><a class="week week--current" href="#lesson" aria-current="step"><span class="week__node">'+n+'</span><span class="week__title">'+t+'</span><span class="now-label">いまここ</span><span class="week__meta">学習中</span></a></li>';
+        }else{
+          html+='<li><div class="week week--locked"><span class="week__node"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="sr-only">未解放:</span><span class="week__title">'+n+' '+t+'</span><span class="week__meta">'+unlockLabel(n)+'</span></div></li>';
+        }
+      }
+      html+='</ol></section>';
+    });
+    host.innerHTML=html;
+  }
+  renderCurriculum();
+
+  /* ---- news badge ---- */
+  function updateNewsBadge(){
+    var count=document.querySelectorAll('#view-news .notice--unread').length;
+    var badge=document.getElementById('nav-news-badge');
+    if(badge){badge.textContent=count;badge.style.display=count?'':'none';}
+    var bell=document.querySelector('.bell-btn');
+    if(bell){
+      bell.classList.toggle('no-unread',count===0);
+      bell.setAttribute('aria-label',count?'通知(未読'+count+'件)':'通知');
+    }
+  }
+  updateNewsBadge();
+
+  /* ---- quiz ---- */
+  var quizBtn=document.getElementById('quiz-submit');
+  if(quizBtn){
+    quizBtn.addEventListener('click',function(){
+      var checked=document.querySelector('input[name="quiz1"]:checked');
+      var fb=document.getElementById('quiz-fb');
+      if(!checked){toast('選択肢を選んでください');return;}
+      fb.hidden=false;
+      if(checked.hasAttribute('data-ok')){
+        fb.className='quiz-fb quiz-fb--ok';
+        fb.textContent='正解です。半年で意図しない体重減少は「判断が変わる情報」。レッドフラッグが1つでもあれば、当日受診をおすすめします。';
+      }else{
+        fb.className='quiz-fb quiz-fb--ng';
+        fb.textContent='この選択肢だけでは緊急性は高くありません。判断が変わるのは「半年で意図せず体重が5%以上減っている」でした。';
+      }
+    });
+  }
+
+  /* ---- click delegation ---- */
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-view]');
+    if(t){
+      e.preventDefault();
+      var v=t.getAttribute('data-view');
+      if(v==='lesson'){openLesson(parseInt(t.getAttribute('data-week'),10));}
+      else{show(v);}
+      return;
+    }
+    var tt=e.target.closest('[data-toast]');
+    if(tt){e.preventDefault();toast(tt.getAttribute('data-toast'));return;}
+    var reg=e.target.closest('[data-action="register"]');
+    if(reg){
+      var ok=document.createElement('span');
+      ok.className='badge badge--ok';ok.textContent='申込済み';
+      reg.replaceWith(ok);
+      toast('申し込みました(モック)');
+      return;
+    }
+    var wk=e.target.closest('a.week');
+    if(wk){
+      e.preventDefault();
+      var node=wk.querySelector('.week__node');
+      openLesson(parseInt(node&&node.textContent,10));
+      return;
+    }
+    var nt=e.target.closest('a.notice');
+    if(nt){
+      e.preventDefault();
+      nt.classList.toggle('open');
+      if(nt.classList.contains('notice--unread')){
+        nt.classList.remove('notice--unread');
+        updateNewsBadge();
+      }
+      return;
+    }
+    var sw=e.target.closest('.switch');
+    if(sw){
+      sw.setAttribute('aria-checked',sw.getAttribute('aria-checked')==='true'?'false':'true');
+      return;
+    }
+    var ch=e.target.closest('.chapter');
+    if(ch){
+      ch.parentElement.querySelectorAll('.chapter').forEach(function(c){c.classList.remove('is-on');});
+      ch.classList.add('is-on');
+      return;
+    }
+  });
+
+  /* ---- hash routing ---- */
+  window.addEventListener('hashchange',function(){
+    var h=location.hash.replace('#','');
+    if(VIEWS.indexOf(h)>=0)show(h,true);
+  });
+  var h0=location.hash.replace('#','');
+  if(VIEWS.indexOf(h0)>=0&&h0!=='home'){
+    if(h0==='lesson'){openLesson(CURRENT);}else{show(h0,true);}
+  }
+})();
+</script>

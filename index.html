@@ -1,0 +1,65 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>デザインモック|陰山式MT連携オンラインスクール</title>
+<style>
+:root{
+  --navy-950:#0D1F30;--navy-900:#122A40;--navy:#17324D;
+  --teal:#1F7A72;--teal-600:#186158;--teal-100:#E2F0EE;
+  --sage:#DDEBE6;--gold:#A8894F;--gold-100:#F3EDDF;
+  --ivory:#F7F5EF;--surface:#FFFFFF;--ink:#1C2833;--slate:#667085;
+  --border:#DDE2E7;--border-strong:#C4CCD4;
+  --font-serif:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif;
+  --font-sans:"Hiragino Kaku Gothic ProN","Yu Gothic Medium","YuGothic","Noto Sans JP",-apple-system,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--navy-950);color:#fff;font-family:var(--font-sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+.bg{position:fixed;inset:0;pointer-events:none;background:
+  radial-gradient(720px 480px at 85% 10%,rgba(31,122,114,.14),transparent 60%),
+  radial-gradient(560px 420px at 8% 92%,rgba(168,137,79,.10),transparent 60%)}
+main{position:relative;width:min(880px,92vw);margin:auto;padding:64px 0}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.22em;color:var(--gold);text-transform:uppercase}
+h1{font-family:var(--font-serif);font-weight:600;font-size:clamp(1.5rem,1.1rem+2vw,2.2rem);letter-spacing:.03em;line-height:1.5;margin-top:14px}
+.lead{margin-top:14px;color:rgba(255,255,255,.72);font-size:14.5px;max-width:620px}
+.cards{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{display:flex;flex-direction:column;gap:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:26px 24px 22px;text-decoration:none;color:#fff;transition:transform .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease)}
+.card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.08)}
+.card:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.card__num{font-family:var(--font-serif);font-size:13px;color:var(--gold);letter-spacing:.14em}
+.card__name{font-family:var(--font-serif);font-size:19px;font-weight:600;letter-spacing:.02em}
+.card__desc{font-size:12.5px;color:rgba(255,255,255,.62);flex:1}
+.card__go{font-size:12.5px;font-weight:700;color:var(--sage);letter-spacing:.06em}
+.card:hover .card__go{color:#fff}
+.note{margin-top:40px;font-size:12px;color:rgba(255,255,255,.45);border-top:1px solid rgba(255,255,255,.12);padding-top:18px;line-height:1.9}
+@media(max-width:720px){.cards{grid-template-columns:1fr}main{padding:48px 0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="bg" aria-hidden="true"></div>
+<main>
+  <p class="eyebrow">Design Mock</p>
+  <h1>陰山式MT連携オンラインスクール<br>プラットフォーム デザインモック</h1>
+  <p class="lead">オンラインスクールプラットフォームの画面イメージです。3つの画面はモック内のリンクで行き来できます。ボタンやタブは実際に操作できます。</p>
+  <div class="cards">
+    <a class="card" href="student-dashboard.html">
+      <span class="card__num">01</span>
+      <span class="card__name">受講生画面</span>
+      <span class="card__desc">ログイン後のマイページ。30週の学習の道のり、レッスン視聴、確認テスト、課題提出、イベント申込など。</span>
+      <span class="card__go">開く →</span>
+    </a>
+    <a class="card" href="admin.html">
+      <span class="card__num">02</span>
+      <span class="card__name">運営管理画面</span>
+      <span class="card__desc">運営側の画面。受講状況の概況、コンテンツの制作進行、LP・集客との連動イメージ。</span>
+      <span class="card__go">開く →</span>
+    </a>
+    <a class="card" href="lp.html">
+      <span class="card__num">03</span>
+      <span class="card__name">LP(販売ページ)</span>
+      <span class="card__desc">スクール紹介・申込ページの構成案。カリキュラムや受講区分の見せ方のたたき台です。</span>
+      <span class="card__go">開く →</span>
+    </a>
+  </div>
+  <p class="note">※本ページはデザイン確認用のモックです。表示されている氏名・数値・日程・価格・プロフィール等はすべて仮のサンプルで、症例はすべて創作です。<br>制作: 株式会社Prorium</p>
+</main>
