@@ -199,11 +199,18 @@ else
       say "  ✓ gstack core … 完了"
       say "  ✓ gstack browser … 完了"
     else
-      # setup が途中で止まった。ブラウザ取得の遮断が原因かを確かめる
+      # setup が途中で止まった。ブラウザ取得の遮断が原因かを確かめる。
+      # CORE ONLY を「正常な状態」として通してよいのは、**原因がブラウザ取得だと確認できたときだけ**。
+      # 依存関係やビルドの失敗まで CORE ONLY に丸めると、setup が完走していないのに
+      # 終了コード0で「使える環境」と報告してしまう（2026-08-28のCodex指摘）
+      SETUP_FAILURE_EXPLAINED=0
       if grep -qE "cdn\.playwright\.dev|request blocked|Failed to install browsers" "${GSTACK_LOG}" 2>/dev/null; then
+        SETUP_FAILURE_EXPLAINED=1
         say "  ! gstack browser … ブラウザの取得を環境に遮断されました"
       else
-        say "  ! gstack setup が完了しませんでした（ブラウザ以外の原因の可能性があります）"
+        say "  ! gstack setup が完了しませんでした（ブラウザ以外の原因です）"
+        say "    ログ: ${GSTACK_LOG}"
+        FAILED+=("gstack-setup（ブラウザ以外の原因で未完了）")
       fi
       GSTACK_BROWSER="ng"
 
@@ -214,7 +221,12 @@ else
           GSTACK_CORE="ok"
           OK+=("gstack-core")
           record "gstack-core"
-          say "  ✓ gstack core … 完了（browser を除く）"
+          if [ "${SETUP_FAILURE_EXPLAINED}" = "1" ]; then
+            say "  ✓ gstack core … 完了（browser を除く）"
+          else
+            # core は使えるが、setup が完走していない事実は消さない
+            say "  △ gstack core … リンクはできたが、setup は完走していない"
+          fi
         else
           GSTACK_CORE="ng"
           FAILED+=("gstack-core")
