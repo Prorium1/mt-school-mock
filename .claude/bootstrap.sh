@@ -30,7 +30,13 @@
 set -uo pipefail   # -e は使わない。1つ失敗しても残りを試して最後に報告するため
 
 SKILLS_DIR="${HOME}/.claude/skills"
-LOCK_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/skills.lock"
+# 導入記録はユーザ側に置く。リポジトリ内に置くと、
+#   1. 通常のセットアップだけで作業ツリーが汚れる（未追跡ファイルが増える）
+#   2. 記録は ~/.claude/skills の状態を指すのに、HOMEが変わっても記録だけ残る
+# の2つが起きる。記録と対象を同じ場所で持たせる（2026-08-28のCodex指摘）
+LOCK_FILE="${HOME}/.claude/skills.lock"
+# 旧版はリポジトリ内に置いていた。残っていれば読み取りだけ引き継ぐ（削除はしない）
+LEGACY_LOCK="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/skills.lock"
 MODE="install"
 
 case "${1:-}" in
@@ -46,8 +52,15 @@ say()  { printf '%s\n' "$*"; }
 head2(){ printf '\n▶ %s\n' "$*"; }
 
 # 導入済み記録。パスの存在確認と併用し、記録だけ残って実体が無い状態を検出する
-recorded() { [ -f "${LOCK_FILE}" ] && grep -qxF "$1" "${LOCK_FILE}" 2>/dev/null; }
-record()   { mkdir -p "$(dirname "${LOCK_FILE}")"; recorded "$1" || printf '%s\n' "$1" >> "${LOCK_FILE}"; }
+recorded() {
+  [ -f "${LOCK_FILE}" ] && grep -qxF "$1" "${LOCK_FILE}" 2>/dev/null && return 0
+  [ -f "${LEGACY_LOCK}" ] && grep -qxF "$1" "${LEGACY_LOCK}" 2>/dev/null
+}
+# --check は「現状を見るだけ」。記録を書くと、状態を見ただけで環境が変わってしまう
+record()   {
+  [ "${MODE}" = "check" ] && return 0
+  mkdir -p "$(dirname "${LOCK_FILE}")"; recorded "$1" || printf '%s\n' "$1" >> "${LOCK_FILE}"
+}
 
 # $1=表示名 $2=実体の判定パス（空なら記録のみで判定） $3...=導入コマンド
 ensure() {
@@ -139,18 +152,39 @@ gstack_fetch() {
 }
 
 if [ "${MODE}" = "check" ]; then
-  if gstack_core_linked; then GSTACK_CORE="ok"; say "  ✓ gstack core … 利用可能"; else GSTACK_CORE="ng"; say "  ✗ gstack core … 未導入"; fi
-  if [ -x "${GSTACK_DIR}/browse/dist/browse" ] && [ -d "${GSTACK_DIR}/browse/dist" ]; then
-    say "  ? gstack browser … 判定にはChromium起動が必要（bootstrap実行時に判定します）"
+  if gstack_core_linked; then
+    GSTACK_CORE="ok"; say "  ✓ gstack core … 利用可能"
   else
-    say "  ✗ gstack browser … 未導入"
+    # 未導入は「未完了」に数える。数えないと、他が揃っているだけで
+    # 「すべて導入済み」と言って終了コード0を返してしまう
+    GSTACK_CORE="ng"; FAILED+=("gstack-core（未導入）"); say "  ✗ gstack core … 未導入"
+  fi
+  if [ -x "${GSTACK_DIR}/browse/dist/browse" ] && [ -d "${GSTACK_DIR}/browse/dist" ]; then
+    # 実体があるうえで前回の導入が成功していれば、その記録を信じる。
+    # 記録が無いときは「不明」のままにする——**「不明」を「利用不可」に丸めない**。
+    # 丸めると、Chromiumが動くMacでもCLAUDE.mdのルールがブラウザ系Skillを止めてしまう
+    if recorded "gstack-browser"; then
+      GSTACK_BROWSER="ok"; say "  ✓ gstack browser … 利用可能（前回の導入記録）"
+    else
+      GSTACK_BROWSER="unknown"; say "  ? gstack browser … 判定不能（Chromium起動が要る。bootstrap実行で判定します）"
+    fi
+  else
+    GSTACK_BROWSER="ng"; say "  ✗ gstack browser … 未導入"
   fi
 elif gstack_core_linked && [ "${MODE}" != "force" ]; then
   GSTACK_CORE="ok"
   say "  ✓ gstack core … 導入済み"
   SKIPPED+=("gstack-core")
-  # 既に core があるときのブラウザ状態は、記録から引き継ぐ
-  recorded "gstack-browser" && GSTACK_BROWSER="ok" || GSTACK_BROWSER="ng"
+  # ブラウザの状態は記録と実体の両方で判断する。記録だけを信じると、
+  # Chromiumが消えていても「利用可能」と言ってしまう
+  if recorded "gstack-browser" && [ -x "${GSTACK_DIR}/browse/dist/browse" ]; then
+    GSTACK_BROWSER="ok"
+  else
+    GSTACK_BROWSER="ng"
+    # core があると gstack setup ごと飛ばすので、ここを黙ると
+    # 「不足を入れる」はずの既定動作でブラウザだけ永久に入らない
+    say "  ! gstack browser … 未導入のまま。取り直すには --force を付けて実行"
+  fi
 else
   say "  ↓ gstack を取得します…"
   if ! gstack_fetch >/dev/null 2>&1; then
@@ -205,15 +239,15 @@ if command -v npx >/dev/null 2>&1; then
     npx -y ui-ux-pro-max-cli init --ai claude --global
 
   head2 "Supabase Agent Skills"
-  ensure "supabase-agent-skills" "" \
+  ensure "supabase-agent-skills" "${SKILLS_DIR}/supabase" \
     npx -y skills add supabase/agent-skills --skill '*' -g -a claude-code -y
 
   head2 "supabase-postgres-best-practices"
-  ensure "supabase-postgres-best-practices" "" \
+  ensure "supabase-postgres-best-practices" "${SKILLS_DIR}/supabase-postgres-best-practices" \
     npx -y skills add supabase/agent-skills --skill supabase-postgres-best-practices -g -a claude-code -y
 
   head2 "web-design-guidelines（Vercel）"
-  ensure "web-design-guidelines" "" \
+  ensure "web-design-guidelines" "${SKILLS_DIR}/web-design-guidelines" \
     npx -y skills add vercel-labs/agent-skills --skill web-design-guidelines -g -a claude-code -y
 else
   say ""
@@ -231,12 +265,16 @@ say "═════════════════════════
 say " 結果"
 say "════════════════════════════════════════════════════"
 case "${GSTACK_CORE}/${GSTACK_BROWSER}" in
-  ok/ok) say "  gstack core:    利用可能"
-         say "  gstack browser: 利用可能" ;;
-  ok/*)  say "  gstack core:    利用可能"
-         say "  gstack browser: 利用不可（CORE ONLY／機能を絞って動作します）" ;;
-  *)     say "  gstack core:    利用不可"
-         say "  gstack browser: 利用不可" ;;
+  ok/ok)      say "  gstack core:    利用可能"
+              say "  gstack browser: 利用可能" ;;
+  # 「判定不能」は「利用不可」と別物として出す。同じにすると、
+  # Chromiumが動く環境でもブラウザ系Skillを禁止する判断に倒れる
+  ok/unknown) say "  gstack core:    利用可能"
+              say "  gstack browser: 判定不能（bootstrap を実行すると判定します）" ;;
+  ok/*)       say "  gstack core:    利用可能"
+              say "  gstack browser: 利用不可（CORE ONLY／機能を絞って動作します）" ;;
+  *)          say "  gstack core:    利用不可"
+              say "  gstack browser: 利用不可" ;;
 esac
 say ""
 [ "${#OK[@]}"      -gt 0 ] && say "  導入した:   ${OK[*]}"
